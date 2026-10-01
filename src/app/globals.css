@@ -1,0 +1,878 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   Design Tokens
+───────────────────────────────────────────── */
+:root {
+  --bg: #eaeaf5;
+  --bg-dark: #1a0a2e;
+  --purple-deep: #3b0764;
+  --purple-mid: #5b21b6;
+  --purple-bright: #7c3aed;
+  --purple-light: #a78bfa;
+  --purple-glow: #c084fc;
+  --text-primary: #1e1b4b;
+  --text-secondary: #4c1d95;
+  --text-muted: #6d28d9;
+  --white: #ffffff;
+  --font-main: "Inter", sans-serif;
+}
+
+/* ─────────────────────────────────────────────
+   Reset & Base
+───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─────────────────────────────────────────────
+   Navbar
+───────────────────────────────────────────── */
+.navbar {
+  position: fixed; /* Stick it to the top so glassmorphism is visible when scrolling */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 70; /* Above the mobile drawer */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 3rem;
+  background: rgba(12, 5, 26, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(167, 139, 250, 0.1);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #a1a1aa; /* Muted gray for inactive */
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+}
+
+.nav-link-active {
+  color: var(--purple-glow);
+  font-weight: 600;
+}
+
+/* Faint gradient line under active link */
+.nav-link-active::before {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--purple-bright), transparent);
+}
+
+/* Glowing dot in the middle of the line */
+.nav-link-active::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 3px var(--purple-bright);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.nav-logo-img {
+  width: auto;
+  height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+  transition: all 0.3s ease;
+}
+
+.nav-logo:hover .nav-logo-img {
+  filter: drop-shadow(0 0 15px var(--purple-glow));
+}
+
+/* ── Hamburger button (hidden on desktop) ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+  z-index: 60;
+  position: relative;
+}
+
+.nav-hamburger:hover {
+  background: rgba(167, 139, 250, 0.15);
+}
+
+.hamburger-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+  transform-origin: center;
+  transition: transform 0.28s ease, opacity 0.2s ease, width 0.2s ease;
+}
+
+/* Animate lines to X when open */
+.line-top-open {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.line-mid-open {
+  opacity: 0;
+  width: 0;
+}
+
+.line-bot-open {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile backdrop ── */
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: rgba(20, 10, 50, 0.35);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* ── Mobile slide-in panel ── */
+.nav-mobile-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  width: min(320px, 85vw);
+  background: rgba(15, 7, 30, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(167, 139, 250, 0.15);
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 2rem 2.5rem;
+  overflow-y: auto;
+}
+
+.nav-mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.nav-mobile-link {
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid rgba(167, 139, 250, 0.15);
+  transition: color 0.2s ease, padding-left 0.2s ease, text-shadow 0.2s ease;
+}
+
+.nav-mobile-link:hover {
+  color: var(--purple-bright);
+  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+  padding-left: 1rem;
+}
+
+.nav-mobile-link-active {
+  color: #c4b5fd;
+}
+
+.nav-mobile-footer {
+  padding-top: 2rem;
+}
+
+.nav-mobile-cta {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  background: #7c3aed;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 50px;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.nav-mobile-cta:hover {
+  background: #6d28d9;
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.6);
+  transform: translateY(-1px);
+}
+
+
+
+/* ─────────────────────────────────────────────
+   Responsive breakpoints — Navbar
+───────────────────────────────────────────── */
+
+/* Tablet: shrink gaps */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 1.1rem 2rem;
+  }
+
+  .nav-links {
+    gap: 1.25rem;
+  }
+
+  .nav-link {
+    font-size: 0.82rem;
+  }
+}
+
+/* Mobile: Logo left, Hamburger right */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.25rem;
+    justify-content: space-between;
+    background: rgba(12, 5, 26, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+
+  /* Hide desktop link groups */
+  .nav-links {
+    display: none;
+  }
+
+  /* Hamburger: move to right */
+  .nav-hamburger {
+    display: flex;
+    order: 1; /* After the logo */
+    position: static;
+  }
+
+  .hamburger-line {
+    background: #fff;
+  }
+
+  /* Logo: stay on left */
+  .nav-logo {
+    color: #fff;
+    order: 0;
+  }
+}
+
+
+/* ─────────────────────────────────────────────
+   Hero Section
+───────────────────────────────────────────── */
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(160deg,
+      #0c051a 0%,
+      #090314 20%,
+      #13062b 50%,
+      #1a073f 75%,
+      #0d041c 100%);
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+/* ── Giant background "ASTRA" text ── */
+.hero-bg-text-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-bg-text {
+  font-size: clamp(10rem, 22vw, 22rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  /* Gradient overlay with background image for monochromatic treatment */
+  background:
+    linear-gradient(180deg,
+      rgba(88, 28, 255, 0.75) 0%,
+      rgba(124, 58, 237, 0.65) 25%,
+      rgba(167, 139, 250, 0.50) 55%,
+      rgba(196, 181, 253, 0.40) 78%,
+      rgba(224, 217, 254, 0.60) 100%),
+    url('/images/astra_text_bg.jpg') center center / cover no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.95;
+  user-select: none;
+  /* Push it slightly upward so characters sit on top */
+  transform: translateY(-8%);
+}
+
+/* ── Secondary background text lines ── */
+.hero-bg-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-bg-line {
+  position: absolute;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(167, 139, 250, 0.06);
+  user-select: none;
+  line-height: 1;
+}
+
+.hero-bg-line-left {
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  bottom: 34%;
+  left: 3%;
+  letter-spacing: 0.08em;
+}
+
+.hero-bg-line-right {
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  top: 22%;
+  right: 1.5%;
+  text-align: right;
+  line-height: 1.2;
+  color: rgba(167, 139, 250, 0.04);
+}
+
+/* ── Character image ── */
+.hero-character {
+  position: absolute;
+  bottom: -4%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: clamp(560px, 72vw, 1000px);
+  pointer-events: none;
+}
+
+.hero-character-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  /*
+   * Mask the bottom of the character image so the feet/legs
+  /*
+   * Mask only the very base of the character image —
+   * lets the side fog layers do the heavy dissolving.
+   * Bottom 18% fades to transparent; above that stays sharp.
+   */
+  -webkit-mask-image: linear-gradient(to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.10) 6%,
+      rgba(0, 0, 0, 0.55) 13%,
+      black 20%);
+  mask-image: linear-gradient(to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.10) 6%,
+      rgba(0, 0, 0, 0.55) 13%,
+      black 20%);
+}
+
+/* ─────────────────────────────────────────────
+   Atmospheric corner fog — bottom-left + bottom-right.
+   These sit ABOVE the characters (z:11) so they form a
+   foreground mist that dissolves the side characters into
+   the background, while also lighting the text areas.
+───────────────────────────────────────────── */
+.char-fog {
+  position: absolute;
+  pointer-events: none;
+  z-index: 11;
+  bottom: 0;
+}
+
+/*
+ * Left corner glow — anchored to bottom-left.
+ * Covers the female character’s lower body and the
+ * description text + CTA area on the left side.
+ * Radial center is at the far left edge, bottom.
+ */
+.char-fog-left {
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(ellipse 100% 85% at 0% 100%,
+      rgba(8, 2, 25, 0.97) 0%,
+      rgba(15, 5, 45, 0.90) 20%,
+      rgba(28, 10, 65, 0.78) 40%,
+      rgba(45, 18, 90, 0.55) 62%,
+      transparent 80%);
+  filter: blur(18px);
+}
+
+/*
+ * Right corner glow — anchored to bottom-right.
+ * Covers the skull character’s lower body and the
+ * PLAY / COMPETE / BELONG tagline on the right side.
+ * Radial center is at the far right edge, bottom.
+ */
+.char-fog-right {
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(ellipse 100% 85% at 100% 100%,
+      rgba(8, 2, 25, 0.97) 0%,
+      rgba(15, 5, 45, 0.90) 20%,
+      rgba(28, 10, 65, 0.78) 40%,
+      rgba(45, 18, 90, 0.55) 62%,
+      transparent 80%);
+  filter: blur(18px);
+}
+
+/* ── Left content ── */
+.hero-left-content {
+  position: absolute;
+  bottom: 10%;
+  left: 4%;
+  z-index: 20;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hero-description {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: rgba(230, 220, 255, 0.92);
+  font-weight: 400;
+}
+
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-cta-btn {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  color: #fff;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.8rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: var(--font-main);
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
+}
+
+.hero-cta-btn:hover {
+  background: #6d28d9;
+  border-color: #6d28d9;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.7);
+}
+
+.hero-cta-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(167, 139, 250, 0.6);
+  background: transparent;
+  color: #c4b5fd;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.hero-cta-icon:hover {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.5);
+}
+
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-avatars {
+  display: flex;
+  align-items: center;
+}
+
+.hero-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid rgba(139, 92, 246, 0.6);
+  flex-shrink: 0;
+}
+
+.hero-trust-text {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(225, 215, 255, 0.95);
+  line-height: 1.3;
+}
+
+.hero-trust-sub {
+  font-size: 0.72rem;
+  color: rgba(185, 170, 245, 0.78);
+  line-height: 1.3;
+}
+
+/* ── Right tagline ── */
+.hero-right-tagline {
+  position: absolute;
+  bottom: 8%;
+  right: 4%;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+  line-height: 1.05;
+}
+
+.hero-tagline-word {
+  display: block;
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+  font-weight: 700;
+  color: #e2e8f0;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(167, 139, 250, 0.3);
+}
+
+.hero-tagline-bold {
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(167, 139, 250, 0.6);
+}
+
+/* ═══════════════════════════════════════════════
+   HERO RESPONSIVE BREAKPOINTS
+═══════════════════════════════════════════════ */
+
+/* ─── Tablet (≤ 1024px) ─── */
+@media (max-width: 1024px) {
+  .hero-character {
+    width: clamp(480px, 80vw, 800px);
+    bottom: -3%;
+  }
+
+  .hero-left-content {
+    max-width: 220px;
+    bottom: 8%;
+    left: 3%;
+    gap: 1rem;
+  }
+
+  .hero-description {
+    font-size: 0.78rem;
+  }
+
+  .hero-right-tagline {
+    bottom: 7%;
+    right: 3%;
+  }
+
+  .hero-tagline-word {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+  }
+
+  .hero-bg-line-left {
+    font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+    bottom: 32%;
+  }
+
+  .hero-bg-line-right {
+    font-size: clamp(1.4rem, 3vw, 2.4rem);
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   hero-mobile-fog  — hidden on desktop, dark on mobile
+══════════════════════════════════════════════════════ */
+.hero-mobile-fog {
+  display: none;
+  /* desktop: hidden */
+}
+
+/* ══════════════════════════════════════════════════════
+   MOBILE HERO  (≤ 768px)
+   Same lavender bg · dark purple bottom fog · white text
+══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── Keep the same lavender background ── */
+  .hero-section {
+    min-height: 100svh;
+  }
+
+  /* ── ASTRA bg text: same blue-purple gradient, sits at TOP ── */
+  .hero-bg-text-wrapper {
+    align-items: flex-start;
+    padding-top: 18%;
+  }
+
+  .hero-bg-text {
+    font-size: clamp(4.5rem, 26vw, 9rem);
+    transform: translateY(0);
+    /* Keep the same desktop gradient and image overlay */
+    background:
+      linear-gradient(180deg,
+        rgba(88, 28, 255, 0.75) 0%,
+        rgba(124, 58, 237, 0.65) 25%,
+        rgba(167, 139, 250, 0.50) 55%,
+        rgba(196, 181, 253, 0.40) 78%,
+        rgba(224, 217, 254, 0.60) 100%),
+      url('/images/astra_text_bg.jpg') center center / cover no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.95;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── Hide ghost secondary lines ── */
+  .hero-bg-lines {
+    display: none;
+  }
+
+  /* ── Character: anchored to top, full viewport width ── */
+  .hero-character {
+    width: 120vw;
+    bottom: auto;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /*
+   * Character mask: fades the lower portion into the dark fog.
+   * The dark fog sits behind (z:9 vs character z:10), so the
+   * character appears to dissolve INTO the purple mist.
+   */
+  .hero-character-img {
+    -webkit-mask-image: linear-gradient(to top,
+        transparent 0%,
+        rgba(0, 0, 0, 0.08) 10%,
+        rgba(0, 0, 0, 0.50) 20%,
+        black 32%);
+    mask-image: linear-gradient(to top,
+        transparent 0%,
+        rgba(0, 0, 0, 0.08) 10%,
+        rgba(0, 0, 0, 0.50) 20%,
+        black 32%);
+  }
+
+  /* ── Dark purple bottom fog (shown on mobile only) ── */
+  .hero-mobile-fog {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 58%;
+    width: 100%;
+    z-index: 9;
+    /* behind character (z:10), above ASTRA text (z:1) */
+    pointer-events: none;
+    /*
+     * Radial gradient: deep dark-purple pools at the very bottom-center,
+     * fading upward and outward into transparency to reveal the lavender bg.
+     * This mimics the "dark purple fog" in the reference image.
+     */
+    background:
+      linear-gradient(to top,
+        rgba(8, 2, 25, 0.97) 0%,
+        rgba(15, 5, 45, 0.90) 18%,
+        rgba(28, 10, 65, 0.78) 35%,
+        rgba(45, 18, 90, 0.55) 52%,
+        rgba(70, 30, 120, 0.28) 68%,
+        transparent 82%);
+    filter: blur(2px);
+  }
+
+  /* ── Hide white corner fogs — replaced by dark fog ── */
+  .char-fog-left,
+  .char-fog-right {
+    display: none;
+  }
+
+  /* ── Left content: white text, full-width at bottom ── */
+  .hero-left-content {
+    bottom: 5%;
+    left: 5%;
+    right: 5%;
+    max-width: none;
+    width: 90vw;
+    gap: 0.9rem;
+    z-index: 20;
+  }
+
+  .hero-description {
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: rgba(230, 220, 255, 0.92);
+  }
+
+  /* ── CTA: filled purple pill (matching reference) ── */
+  .hero-cta-btn {
+    background: #7c3aed;
+    border-color: #7c3aed;
+    color: #fff;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    padding: 0.75rem 1.8rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-cta-btn:hover {
+    background: #6d28d9;
+    border-color: #6d28d9;
+    color: #fff;
+  }
+
+  /* CTA arrow icon: white on dark */
+  .hero-cta-icon {
+    border-color: rgba(167, 139, 250, 0.6);
+    color: #c4b5fd;
+  }
+
+  .hero-cta-icon:hover {
+    background: #7c3aed;
+    border-color: #7c3aed;
+    color: #fff;
+  }
+
+  /* Trust row: white text */
+  .hero-trust-text {
+    font-size: 0.74rem;
+    color: rgba(225, 215, 255, 0.95);
+  }
+
+  .hero-trust-sub {
+    font-size: 0.68rem;
+    color: rgba(185, 170, 245, 0.78);
+  }
+
+  /* Avatar borders: subtle glowing ring */
+  .hero-avatar {
+    width: 26px;
+    height: 26px;
+    border-color: rgba(139, 92, 246, 0.6);
+  }
+
+  /* ── Right tagline: hidden on mobile ── */
+  .hero-right-tagline {
+    display: none;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   SMALL MOBILE  (≤ 480px)
+══════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+
+  .hero-bg-text-wrapper {
+    padding-top: 50%;
+  }
+
+  .hero-bg-text {
+    font-size: clamp(3.8rem, 28vw, 6.5rem);
+  }
+
+  .hero-character {
+    top: 30%;
+  }
+
+  .hero-mobile-fog {
+    height: 54%;
+  }
+
+  .hero-left-content {
+    bottom: 3%;
+    left: 5%;
+    right: 5%;
+    gap: 0.75rem;
+  }
+
+  .hero-description {
+    font-size: 0.79rem;
+  }
+}
