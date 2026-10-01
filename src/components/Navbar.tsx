@@ -24,7 +24,8 @@ const menuVariants = {
   exit: {
     opacity: 0,
     x: "100%",
-    transition: { type: "tween", duration: 0.24, ease: [0.55, 0.06, 0.68, 0.19] },
+    transition: { type: "tween", duration: 0.24, ease: [0.55, 0.06,
+       0.68, 0.19] },
   },
 };
 
