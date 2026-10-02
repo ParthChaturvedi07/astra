@@ -79,7 +79,7 @@ export default function TournamentFormatsSection() {
         </div>
 
         {/* Right: Background Text & Popular Maps */}
-        <div className="relative flex items-center justify-start xl:justify-end w-full xl:w-auto">
+        <div className="relative flex items-center justify-start xl:justify-end w-full xl:w-auto min-w-0">
           {/* Faded Background Text */}
           <div className="absolute right-[110%] top-1/2 -translate-y-1/2 flex-col text-right hidden xl:flex opacity-[0.04] font-black text-6xl uppercase leading-[0.85] select-none text-white whitespace-nowrap">
             <span>Play</span>
@@ -88,13 +88,13 @@ export default function TournamentFormatsSection() {
           </div>
 
           {/* Popular Maps Box */}
-          <div className="rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md p-4 sm:p-5 flex flex-col gap-4 shadow-[0_0_30px_rgba(124,58,237,0.1)]">
-            <div className="flex items-center gap-2 text-[10px] font-bold text-purple-300 uppercase tracking-widest">
+          <div className="rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md p-4 sm:p-5 flex flex-col gap-4 shadow-[0_0_30px_rgba(124,58,237,0.1)] w-full sm:w-max max-w-full overflow-hidden">
+            <div className="flex items-center gap-2 text-[10px] font-bold text-purple-300 uppercase tracking-widest shrink-0">
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
               Popular Maps
             </div>
 
-            <div className="flex items-center gap-3 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+            <div className="flex items-center gap-3 overflow-x-auto pb-1 sm:pb-0 scrollbar-none w-full">
               {[
                 { name: 'Bermuda', image: '/images/tournamentformat/bermuda.png' },
                 { name: 'Kalahari', image: '/images/tournamentformat/kalahari.png' },
@@ -116,12 +116,12 @@ export default function TournamentFormatsSection() {
       </div>
 
       {/* Cards Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5 xl:gap-6">
         {formats.map((format, idx) => (
           <div key={idx} className="relative rounded-2xl border border-purple-400/20 bg-[#150a2e] backdrop-blur-md overflow-hidden group hover:border-purple-400/50 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_0_25px_rgba(124,58,237,0.2)] hover:-translate-y-1 flex flex-col">
 
             {/* Background Image */}
-            <div className="absolute inset-0 z-0 h-[60%] sm:h-[55%] overflow-hidden">
+            <div className="absolute top-0 inset-x-0 z-0 h-[160px] sm:h-[190px] overflow-hidden">
               <Image
                 src={format.image}
                 alt={format.title}
