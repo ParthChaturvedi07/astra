@@ -11,12 +11,13 @@ if (typeof window !== "undefined") {
 }
 
 // Avatar placeholder data for "Trusted by" section
+// Avatar placeholder data for "Trusted by" section
 const avatars = [
-  { id: 1, color: "#7C3AED" },
-  { id: 2, color: "#9333EA" },
-  { id: 3, color: "#A855F7" },
-  { id: 4, color: "#6D28D9" },
-  { id: 5, color: "#8B5CF6" },
+  { id: 1, image: "https://i.pravatar.cc/100?img=11" },
+  { id: 2, image: "https://i.pravatar.cc/100?img=33" },
+  { id: 3, image: "https://i.pravatar.cc/100?img=47" },
+  { id: 4, image: "https://i.pravatar.cc/100?img=12" },
+  { id: 5, image: "https://i.pravatar.cc/100?img=53" },
 ];
 
 export default function HeroSection() {
@@ -176,13 +177,16 @@ export default function HeroSection() {
             {avatars.map((avatar, i) => (
               <div
                 key={avatar.id}
-                className="hero-avatar"
+                className="hero-avatar relative overflow-hidden"
                 style={{
-                  background: `radial-gradient(circle at 35% 35%, #c084fc, ${avatar.color})`,
                   marginLeft: i === 0 ? "0" : "-10px",
                   zIndex: avatars.length - i,
+                  border: "2px solid #150a2e",
+                  backgroundColor: "#150a2e"
                 }}
-              />
+              >
+                <img src={avatar.image} alt="User Avatar" className="w-full h-full object-cover" />
+              </div>
             ))}
           </div>
           <div>

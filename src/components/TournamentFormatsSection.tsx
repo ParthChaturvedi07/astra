@@ -57,7 +57,7 @@ const formats = [
 
 export default function TournamentFormatsSection() {
   return (
-    <section className="w-full relative py-20 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto z-20">
+    <section className="w-full relative py-20 px-4 sm:px-8 md:px-12 lg:px-16 mx-auto z-20">
       {/* Top Header Section */}
       <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-12 mb-12 sm:mb-16">
 
