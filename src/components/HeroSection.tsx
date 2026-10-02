@@ -4,6 +4,11 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 // Avatar placeholder data for "Trusted by" section
 const avatars = [
@@ -21,6 +26,29 @@ export default function HeroSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Parallax for Background Text
+      gsap.to(".hero-bg-text-wrapper", {
+        yPercent: 50,
+        ease: "none",
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      // Parallax for Character
+      gsap.to(".hero-character-parallax", {
+        yPercent: 20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
       // Background ASTRA text: starts scaled-up, animates to normal
       gsap.fromTo(
         ".hero-bg-text",
@@ -98,22 +126,24 @@ export default function HeroSection() {
       </div>
 
       {/* ── Corner fog: bottom-left (female char + text) and bottom-right (skull char + tagline) ── */}
-      <div className="char-fog char-fog-left"  aria-hidden="true" />
+      <div className="char-fog char-fog-left" aria-hidden="true" />
       <div className="char-fog char-fog-right" aria-hidden="true" />
 
       {/* ── Mobile-only: dark purple bottom fog over the lower hero area ── */}
       <div className="hero-mobile-fog" aria-hidden="true" />
 
       {/* ── Center character image (on top of ASTRA text) ── */}
-      <div ref={characterRef} className="hero-character">
-        <Image
-          src="/images/Hero_character.png"
-          alt="Astra Game Characters"
-          width={900}
-          height={700}
-          priority
-          className="hero-character-img"
-        />
+      <div className="hero-character-parallax" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 10 }}>
+        <div ref={characterRef} className="hero-character pointer-events-auto">
+          <Image
+            src="/images/Hero_character.png"
+            alt="Astra Game Characters"
+            width={900}
+            height={700}
+            priority
+            className="hero-character-img"
+          />
+        </div>
       </div>
 
       {/* ── Left content ── */}

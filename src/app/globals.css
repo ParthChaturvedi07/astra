@@ -19,21 +19,12 @@
   --font-main: "Inter", sans-serif;
 }
 
-/* ─────────────────────────────────────────────
-   Reset & Base
-───────────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 html,
 body {
   height: 100%;
   overflow-x: hidden;
+  scrollbar-width: none;
+  /* scrollbar-color: var(--purple-light) var(--purple-deep); */
 }
 
 body {
@@ -41,17 +32,25 @@ body {
   background: var(--bg);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
+  background: linear-gradient(160deg,
+      #0c051a 0%,
+      #090314 20%,
+      #13062b 50%,
+      #1a073f 75%,
+      #0d041c 100%);
 }
 
 /* ─────────────────────────────────────────────
    Navbar
 ───────────────────────────────────────────── */
 .navbar {
-  position: fixed; /* Stick it to the top so glassmorphism is visible when scrolling */
+  position: fixed;
+  /* Stick it to the top so glassmorphism is visible when scrolling */
   top: 0;
   left: 0;
   right: 0;
-  z-index: 70; /* Above the mobile drawer */
+  z-index: 59;
+  /* Above the mobile drawer */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -71,7 +70,8 @@ body {
 .nav-link {
   font-size: 0.85rem;
   font-weight: 500;
-  color: #a1a1aa; /* Muted gray for inactive */
+  color: #a1a1aa;
+  /* Muted gray for inactive */
   text-decoration: none;
   letter-spacing: 0.03em;
   transition: color 0.2s ease, text-shadow 0.2s ease;
@@ -157,6 +157,12 @@ body {
   background: rgba(167, 139, 250, 0.15);
 }
 
+/* Hide hamburger when the mobile panel is open (panel has its own close btn) */
+.nav-hamburger-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .hamburger-line {
   display: block;
   width: 22px;
@@ -197,7 +203,7 @@ body {
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 60;
+  z-index: 61;
   width: min(320px, 85vw);
   background: rgba(15, 7, 30, 0.75);
   backdrop-filter: blur(20px);
@@ -206,9 +212,59 @@ body {
   box-shadow: -8px 0 40px rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
-  padding: 5rem 2rem 2.5rem;
+  padding: 1.25rem 2rem 2.5rem;
   overflow-y: auto;
 }
+
+/* ── Panel header: logo + close button ── */
+.nav-mobile-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(167, 139, 250, 0.12);
+  margin-bottom: 1rem;
+}
+
+/* ── Close (×) button inside the panel ── */
+.nav-mobile-close {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(167, 139, 250, 0.1);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.nav-mobile-close:hover {
+  background: rgba(167, 139, 250, 0.22);
+  border-color: rgba(167, 139, 250, 0.4);
+}
+
+.nav-mobile-close-line {
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+.nav-mobile-close-line-1 {
+  transform: rotate(45deg);
+}
+
+.nav-mobile-close-line-2 {
+  transform: rotate(-45deg);
+}
+
 
 .nav-mobile-links {
   display: flex;
@@ -304,7 +360,8 @@ body {
   /* Hamburger: move to right */
   .nav-hamburger {
     display: flex;
-    order: 1; /* After the logo */
+    order: 1;
+    /* After the logo */
     position: static;
   }
 
@@ -327,15 +384,9 @@ body {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(160deg,
-      #0c051a 0%,
-      #090314 20%,
-      #13062b 50%,
-      #1a073f 75%,
-      #0d041c 100%);
   display: flex;
   align-items: stretch;
-  overflow: hidden;
+  margin-bottom: 4rem;
 }
 
 /* ── Giant background "ASTRA" text ── */
@@ -875,4 +926,39 @@ body {
   .hero-description {
     font-size: 0.79rem;
   }
+}
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
+.carousel-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+.carousel-track {
+  animation: marquee-left 28s linear infinite;
+}
+
+.carousel-pause-on-hover:hover .carousel-track {
+  animation-play-state: paused;
 }

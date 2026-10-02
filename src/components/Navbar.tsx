@@ -24,8 +24,10 @@ const menuVariants = {
   exit: {
     opacity: 0,
     x: "100%",
-    transition: { type: "tween", duration: 0.24, ease: [0.55, 0.06,
-       0.68, 0.19] },
+    transition: {
+      type: "tween", duration: 0.24, ease: [0.55, 0.06,
+        0.68, 0.19]
+    },
   },
 };
 
@@ -51,14 +53,14 @@ export default function Navbar() {
       >
         {/* ── Mobile: hamburger (order:-1 on mobile → far left) ── */}
         <button
-          className="nav-hamburger"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          className={`nav-hamburger${mobileOpen ? " nav-hamburger-hidden" : ""}`}
+          aria-label="Open menu"
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
         >
-          <span className={`hamburger-line ${mobileOpen ? "line-top-open" : ""}`} />
-          <span className={`hamburger-line ${mobileOpen ? "line-mid-open" : ""}`} />
-          <span className={`hamburger-line ${mobileOpen ? "line-bot-open" : ""}`} />
+          <span className="hamburger-line" />
+          <span className="hamburger-line" />
+          <span className="hamburger-line" />
         </button>
 
         {/* ── Desktop: left links ── */}
@@ -88,7 +90,7 @@ export default function Navbar() {
           ))}
         </div>
 
-    </motion.nav>
+      </motion.nav>
 
       {/* ── Mobile drawer overlay ── */}
       <AnimatePresence>
@@ -112,6 +114,21 @@ export default function Navbar() {
               animate="open"
               exit="exit"
             >
+              {/* Panel header with close button */}
+              <div className="nav-mobile-panel-header">
+                <Link href="/" className="nav-logo" onClick={() => setMobileOpen(false)}>
+                  <Image src="/images/astra_logo.png" alt="Astra Logo" width={90} height={24} className="nav-logo-img" />
+                </Link>
+                <button
+                  className="nav-mobile-close"
+                  aria-label="Close menu"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <span className="nav-mobile-close-line nav-mobile-close-line-1" />
+                  <span className="nav-mobile-close-line nav-mobile-close-line-2" />
+                </button>
+              </div>
+
               <div className="nav-mobile-links">
                 {navLinks.map((link, i) => (
                   <motion.div
