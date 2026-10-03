@@ -92,15 +92,15 @@ export default function SupportedGamesSection({
         <button className="flex items-center justify-center rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md transition-all duration-300 hover:border-purple-400/50 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:-translate-y-1 group" style={{ padding: '10px 24px', gap: '12px' }}>
           <div className="shrink-0 relative" style={{ width: '28px', height: '28px', flexShrink: 0 }}>
             <Image 
-              src="/images/apple.png" 
+              src="/images/apk.png" 
               alt="App Store" 
               fill
               className="object-contain"
             />
           </div>
           <div className="flex flex-col items-start shrink-0" style={{ flexShrink: 0 }}>
-            <span className="text-purple-200/70 font-semibold uppercase tracking-wider leading-none" style={{ fontSize: '10px', marginBottom: '2px' }}>Download on the</span>
-            <span className="font-bold text-white leading-none tracking-tight" style={{ fontSize: '17px' }}>App Store</span>
+            <span className="text-purple-200/70 font-semibold uppercase tracking-wider leading-none" style={{ fontSize: '10px', marginBottom: '2px' }}>Get APK</span>
+            <span className="font-bold text-white leading-none tracking-tight" style={{ fontSize: '17px' }}>Download</span>
           </div>
         </button>
       </div>
