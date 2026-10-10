@@ -96,7 +96,7 @@ export default function DynamicStreamingSection() {
             </div>
 
             {/* Image — absolutely positioned at bottom */}
-            <div className="absolute -bottom-16 inset-x-0 z-10 h-[75%] transition-transform duration-700 ease-out group-hover:-translate-y-2">
+            <div className="absolute -bottom-16 inset-x-0 z-10 h-[80%] transition-transform duration-700 ease-out group-hover:-translate-y-2">
               <Image
                 src="/images/streaming/card-1.png"
                 alt="Gaming content on Astra app"
@@ -163,7 +163,7 @@ export default function DynamicStreamingSection() {
             </div>
 
             {/* Image — absolutely positioned at bottom */}
-            <div className="absolute -bottom-16 inset-x-0 z-10 h-[75%] transition-transform duration-700 ease-out group-hover:-translate-y-2">
+            <div className="absolute -bottom-12 inset-x-0 z-10 h-[75%] transition-transform duration-700 ease-out group-hover:-translate-y-2">
               <Image
                 src="/images/streaming/card-2.png"
                 alt="Connect with streamers on Astra"
