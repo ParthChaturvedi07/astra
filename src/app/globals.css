@@ -927,6 +927,789 @@ body {
     font-size: 0.79rem;
   }
 }
+/* ─────────────────────────────────────────────
+   How To Play Section
+───────────────────────────────────────────── */
+.htp-section {
+  position: relative;
+  width: 100%;
+  padding: 5rem 4% 0;
+  overflow: hidden;
+  z-index: 20;
+}
+
+/* ── Background Character ── */
+.htp-bg-char-wrapper {
+  position: absolute;
+  top: 8%;
+  right: -2%;
+  width: 48%;
+  max-width: 700px;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.htp-bg-char-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.35;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 50%,
+    transparent 90%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 50%,
+    transparent 90%
+  );
+  filter: saturate(1.2);
+}
+
+/* ── Background "PLAY COMPETE BELONG" text ── */
+.htp-bg-text-wrapper {
+  position: absolute;
+  top: 5%;
+  right: 30%;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+  line-height: 0.9;
+}
+
+.htp-bg-text-line {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 900;
+  color: rgba(167, 139, 250, 0.06);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  user-select: none;
+  line-height: 1;
+}
+
+/* ── Content Wrapper ── */
+.htp-content {
+  position: relative;
+  z-index: 5;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+.htp-header {
+  margin-bottom: 2.5rem;
+  max-width: 540px;
+}
+
+.htp-header-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.htp-label-text {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--purple-light);
+  text-transform: uppercase;
+}
+
+.htp-label-line {
+  height: 1px;
+  width: 3rem;
+  background: linear-gradient(90deg, var(--purple-light), transparent);
+}
+
+.htp-header-title {
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.htp-title-accent {
+  background: linear-gradient(135deg, #7c3aed, #c084fc, #e879f9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.htp-header-desc {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: rgba(196, 181, 253, 0.75);
+  max-width: 440px;
+  font-weight: 400;
+}
+
+/* ── Cards Grid ── */
+.htp-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 1.1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Step Card ── */
+.htp-step-card {
+  position: relative;
+  border-radius: 1rem;
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  background: linear-gradient(
+    160deg,
+    rgba(30, 15, 60, 0.85) 0%,
+    rgba(20, 10, 45, 0.92) 50%,
+    rgba(15, 7, 35, 0.95) 100%
+  );
+  backdrop-filter: blur(12px);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.htp-step-card:hover {
+  border-color: rgba(124, 58, 237, 0.5);
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Top glow edge */
+.htp-card-glow {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.6), rgba(192, 132, 252, 0.4), transparent);
+}
+
+/* Step Number */
+.htp-step-number {
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.08);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+
+/* Step Icon */
+.htp-step-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(124, 58, 237, 0.2);
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--purple-glow);
+  flex-shrink: 0;
+  transition: background 0.3s ease;
+}
+
+.htp-step-card:hover .htp-step-icon {
+  background: rgba(124, 58, 237, 0.4);
+}
+
+/* Step Title */
+.htp-step-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.htp-step-title-highlight {
+  background: linear-gradient(135deg, #7c3aed, #c084fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Step Description */
+.htp-step-desc {
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: rgba(196, 181, 253, 0.65);
+  font-weight: 400;
+}
+/* ── Mini UI: Game Links ── */
+.htp-mini-ui {
+  margin-top: auto;
+  border-radius: 0.6rem;
+  background: rgba(10, 5, 25, 0.7);
+  border: 1px solid rgba(124, 58, 237, 0.15);
+  overflow: hidden;
+}
+
+.htp-mini-game-links {
+  padding: 0;
+}
+
+.htp-mini-label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--purple-light);
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+/* ── Mini UI: Game Link Visual ── */
+.htp-gamelink-visual {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.12), rgba(15, 7, 35, 0.7));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.htp-gamelink-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  transition: transform 0.3s ease;
+}
+
+.htp-step-card:hover .htp-gamelink-img {
+  transform: scale(1.05);
+}
+
+/* ── Mini UI: Lobby Details ── */
+.htp-mini-lobby {
+  padding: 0.7rem;
+}
+
+.htp-lobby-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.htp-lobby-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(230, 220, 255, 0.9);
+}
+
+.htp-lobby-live {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.12);
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.htp-live-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #f87171;
+  animation: htp-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes htp-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.htp-lobby-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.htp-lobby-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 6px;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+.htp-field-label {
+  font-size: 0.62rem;
+  color: rgba(196, 181, 253, 0.5);
+  font-weight: 500;
+}
+
+.htp-field-value {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(230, 220, 255, 0.95);
+  font-family: 'Courier New', monospace;
+}
+
+.htp-field-value svg {
+  color: var(--purple-light);
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.htp-field-value svg:hover {
+  opacity: 1;
+}
+
+/* ── Mini UI: Compete Visual ── */
+.htp-mini-compete {
+  margin-top: auto;
+  background: transparent;
+  border: none;
+  position: relative;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  min-height: 80px;
+}
+
+.htp-compete-visual {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(20, 10, 45, 0.6));
+  border: 1px solid rgba(124, 58, 237, 0.15);
+}
+
+.htp-compete-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  opacity: 0.5;
+  filter: saturate(1.3);
+}
+
+/* ── Reward Redemption Card ── */
+.htp-reward-card {
+  position: relative;
+  border-radius: 1rem;
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  background: linear-gradient(
+    160deg,
+    rgba(30, 15, 60, 0.85) 0%,
+    rgba(20, 10, 45, 0.92) 50%,
+    rgba(15, 7, 35, 0.95) 100%
+  );
+  backdrop-filter: blur(12px);
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.htp-reward-card:hover {
+  border-color: rgba(124, 58, 237, 0.5);
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.15);
+  transform: translateY(-2px);
+}
+
+.htp-reward-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.htp-reward-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.htp-reward-sub {
+  font-size: 0.72rem;
+  color: rgba(196, 181, 253, 0.6);
+  font-weight: 400;
+}
+
+/* Reward Options */
+.htp-reward-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.htp-reward-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(10, 5, 25, 0.6);
+  border: 1px solid rgba(124, 58, 237, 0.15);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.htp-reward-option:hover {
+  border-color: rgba(124, 58, 237, 0.4);
+  background: rgba(124, 58, 237, 0.08);
+}
+
+.htp-reward-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.htp-reward-upi {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.htp-upi-text {
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+}
+
+.htp-reward-gplay {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.htp-reward-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.htp-reward-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.htp-reward-detail {
+  font-size: 0.65rem;
+  color: rgba(196, 181, 253, 0.55);
+  font-weight: 400;
+}
+
+.htp-reward-chevron {
+  color: rgba(196, 181, 253, 0.4);
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.htp-reward-option:hover .htp-reward-chevron {
+  color: var(--purple-glow);
+}
+
+/* Redeem Now Button */
+.htp-redeem-btn {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.65rem;
+  border: 1px solid rgba(124, 58, 237, 0.4);
+  background: rgba(124, 58, 237, 0.15);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-main);
+}
+
+.htp-redeem-btn:hover {
+  background: rgba(124, 58, 237, 0.35);
+  border-color: rgba(124, 58, 237, 0.7);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+}
+
+/* ── Stats Bar ── */
+.htp-stats-bar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  background: linear-gradient(
+    90deg,
+    rgba(20, 10, 45, 0.8) 0%,
+    rgba(15, 7, 35, 0.85) 50%,
+    rgba(20, 10, 45, 0.8) 100%
+  );
+  backdrop-filter: blur(8px);
+  padding: 1rem 1.5rem;
+}
+
+.htp-stats-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  padding-right: 2rem;
+  border-right: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.htp-shield-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(192, 132, 252, 0.15));
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--purple-glow);
+  flex-shrink: 0;
+}
+
+.htp-badge-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.htp-badge-title {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.htp-badge-sub {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: rgba(196, 181, 253, 0.6);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Stats Items */
+.htp-stats-items {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+  justify-content: space-around;
+}
+
+.htp-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.htp-stat-icon {
+  color: var(--purple-light);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.htp-stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.htp-stat-value {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.htp-stat-label {
+  font-size: 0.6rem;
+  color: rgba(196, 181, 253, 0.5);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ─────────────────────────────────────────────
+   How To Play — Responsive
+───────────────────────────────────────────── */
+
+/* Large desktop (≤ 1280px) */
+@media (max-width: 1280px) {
+  .htp-cards-grid {
+    grid-template-columns: repeat(3, 1fr) 1.1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* Tablet (≤ 1024px) */
+@media (max-width: 1024px) {
+  .htp-section {
+    padding: 4rem 3%;
+  }
+
+  .htp-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .htp-bg-char-wrapper {
+    width: 55%;
+    top: -5%;
+    right: -5%;
+  }
+
+  .htp-bg-text-wrapper {
+    top: 3%;
+  }
+
+  .htp-stats-bar {
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .htp-stats-badge {
+    padding-right: 1rem;
+    border-right: none;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+    padding-bottom: 0.75rem;
+    width: 100%;
+  }
+
+  .htp-stats-items {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  .htp-section {
+    padding: 3.5rem 4%;
+  }
+
+  .htp-header-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .htp-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .htp-bg-char-wrapper {
+    width: 80%;
+    top: 0;
+    right: -10%;
+    opacity: 0.6;
+  }
+
+  .htp-bg-text-wrapper {
+    top: 2%;
+    right: 2%;
+  }
+
+  .htp-bg-text-line {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+
+  .htp-stats-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .htp-stats-items {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .htp-stat-item {
+    width: 100%;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.08);
+  }
+
+  .htp-stat-item:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Small mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .htp-section {
+    padding: 2.5rem 3.5%;
+  }
+
+  .htp-header-title {
+    font-size: clamp(1.8rem, 9vw, 2.4rem);
+  }
+
+  .htp-header-desc {
+    font-size: 0.8rem;
+  }
+
+  .htp-step-card {
+    padding: 1rem;
+  }
+
+  .htp-bg-char-wrapper {
+    display: none;
+  }
+
+  .htp-bg-text-wrapper {
+    display: none;
+  }
+}
+
 @keyframes marquee-left {
   from {
     transform: translateX(0);

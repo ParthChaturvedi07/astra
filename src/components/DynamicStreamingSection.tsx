@@ -54,7 +54,7 @@ export default function DynamicStreamingSection() {
             <div className="absolute inset-0 rounded-[1.75rem] bg-gradient-to-br from-purple-500/5 via-transparent to-transparent pointer-events-none" />
 
             {/* Marquee background game icons - Row 1 */}
-            <div className="absolute bottom-[25%] inset-x-0 overflow-hidden opacity-30 z-0 pointer-events-none flex">
+            <div className="absolute bottom-[35%] inset-x-0 overflow-hidden opacity-30 z-0 pointer-events-none flex">
               <div className="flex w-max animate-marquee">
                 {[...Array(2)].map((_, i) => (
                   <div key={i} className="flex gap-12 pr-12">
@@ -69,7 +69,7 @@ export default function DynamicStreamingSection() {
             </div>
 
             {/* Marquee background game icons - Row 2 */}
-            <div className="absolute bottom-[15%] inset-x-0 overflow-hidden opacity-20 z-0 pointer-events-none flex">
+            <div className="absolute bottom-[25%] inset-x-0 overflow-hidden opacity-20 z-0 pointer-events-none flex">
               <div className="flex w-max animate-marquee-reverse">
                 {[...Array(2)].map((_, i) => (
                   <div key={i} className="flex gap-16 pr-16">
@@ -120,7 +120,7 @@ export default function DynamicStreamingSection() {
             <div className="absolute inset-0 rounded-[1.75rem] bg-gradient-to-br from-purple-500/5 via-transparent to-transparent pointer-events-none" />
 
             {/* Marquee background game icons - Row 1 */}
-            <div className="absolute bottom-[25%] inset-x-0 overflow-hidden opacity-30 z-0 pointer-events-none flex">
+            <div className="absolute bottom-[35%] inset-x-0 overflow-hidden opacity-30 z-0 pointer-events-none flex">
               <div className="flex w-max animate-marquee">
                 {[...Array(2)].map((_, i) => (
                   <div key={i} className="flex gap-14 pr-14">
@@ -135,7 +135,7 @@ export default function DynamicStreamingSection() {
             </div>
 
             {/* Marquee background game icons - Row 2 */}
-            <div className="absolute bottom-[15%] inset-x-0 overflow-hidden opacity-20 z-0 pointer-events-none flex">
+            <div className="absolute bottom-[25%] inset-x-0 overflow-hidden opacity-20 z-0 pointer-events-none flex">
               <div className="flex w-max animate-marquee-reverse">
                 {[...Array(2)].map((_, i) => (
                   <div key={i} className="flex gap-12 pr-12">
@@ -163,9 +163,9 @@ export default function DynamicStreamingSection() {
             </div>
 
             {/* Image — absolutely positioned at bottom */}
-            <div className="absolute -bottom-12 inset-x-0 z-10 h-[75%] transition-transform duration-700 ease-out group-hover:-translate-y-2">
+            <div className="absolute -bottom-16 inset-x-0 z-10 h-[90%] transition-transform duration-700 ease-out group-hover:-translate-y-2">
               <Image
-                src="/images/streaming/card-2.png"
+                src="/images/streaming/card-2(3).png"
                 alt="Connect with streamers on Astra"
                 fill
                 className="object-contain object-bottom drop-shadow-[0_0_60px_rgba(139,92,246,0.4)]"
