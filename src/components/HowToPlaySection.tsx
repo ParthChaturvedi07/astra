@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import DottedPatch from "@/components/DottedPatch";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -233,6 +234,59 @@ export default function HowToPlaySection() {
 
   return (
     <section ref={sectionRef} className="htp-section" id="how-to-play">
+      {/* Background Dotted Patches */}
+      <DottedPatch
+        top="4%"
+        left="1%"
+        width={450}
+        height={280}
+        rotate={6}
+        maskShape="ellipse"
+        glow
+        glowColor="rgba(124, 58, 237, 0.16)"
+        animate="float"
+      />
+      <DottedPatch
+        top="38%"
+        left="8%"
+        width={340}
+        height={350}
+        rotate={-12}
+        maskShape="soft"
+        dotColor="rgba(192, 132, 252, 0.35)"
+      />
+      <DottedPatch
+        top="45%"
+        right="24%"
+        width={310}
+        height={270}
+        rotate={14}
+        maskShape="circle"
+        dotColor="rgba(124, 58, 237, 0.4)"
+        spacing={18}
+      />
+      <DottedPatch
+        top="22%"
+        right="-2%"
+        width={420}
+        height={330}
+        rotate={-8}
+        maskShape="fade-right"
+        dotColor="rgba(167, 139, 250, 0.3)"
+        animate="pulse"
+      />
+      <DottedPatch
+        bottom="4%"
+        left="5%"
+        width={360}
+        height={220}
+        rotate={-7}
+        maskShape="pill"
+        glow
+        glowColor="rgba(167, 139, 250, 0.12)"
+        animate="float"
+      />
+
       {/* ── Background Character ── */}
       <div className="htp-bg-char-wrapper">
         <div className="htp-bg-char">

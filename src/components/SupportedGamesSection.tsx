@@ -1,6 +1,13 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const gameIcons = [
   { id: "bgmi", src: "/images/gameicons/bgmi.png" },
@@ -22,13 +29,74 @@ interface SupportedGamesSectionProps {
 export default function SupportedGamesSection({
   className = "",
 }: SupportedGamesSectionProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Carousel container reveal
+      gsap.fromTo(
+        ".sg-carousel",
+        { opacity: 0, y: 30, scale: 0.96 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".sg-carousel",
+            start: "top 85%",
+          },
+        }
+      );
+
+      // Download prompt text
+      gsap.fromTo(
+        ".sg-prompt",
+        { opacity: 0, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".sg-prompt",
+            start: "top 85%",
+          },
+        }
+      );
+
+      // Buttons stagger
+      gsap.fromTo(
+        ".sg-btn",
+        { opacity: 0, y: 30, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "back.out(1.4)",
+          scrollTrigger: {
+            trigger: ".sg-buttons-wrap",
+            start: "top 88%",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="games"
-      className={`w-full flex flex-col items-center justify-center min-h-[20vh] py-10 ${className}`}
+      className={`w-full relative overflow-hidden flex flex-col items-center justify-center min-h-[20vh] py-10 ${className}`}
     >
+
       {/* Carousel */}
-      <div className="w-full max-w-[1000px] mx-auto overflow-hidden px-4">
+      <div className="sg-carousel w-full max-w-[1000px] mx-auto overflow-hidden px-4 relative z-10">
         <div className="carousel-mask carousel-pause-on-hover">
           <div className="carousel-track flex gap-4 pr-4 w-max">
             {track.map((g, i) => (
@@ -63,7 +131,7 @@ export default function SupportedGamesSection({
       </div>
 
       {/* Download Prompt */}
-      <div className="flex flex-col items-center justify-center text-center mt-12 mb-2 px-4 relative z-10">
+      <div className="sg-prompt flex flex-col items-center justify-center text-center mt-12 mb-2 px-4 relative z-10">
         <h3 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-wide">
           Play. Compete. <span className="text-[#7c3aed]">Win.</span>
         </h3>
@@ -73,12 +141,12 @@ export default function SupportedGamesSection({
       </div>
 
       {/* Download Buttons */}
-      <div className="flex flex-col sm:flex-row px-4 relative z-10 w-full sm:w-auto" style={{ marginTop: '32px', gap: '16px', justifyContent: 'center', alignItems: 'center' }}>
-        <button className="flex items-center justify-center rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md transition-all duration-300 hover:border-purple-400/50 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:-translate-y-1 group" style={{ padding: '10px 24px', gap: '12px' }}>
+      <div className="sg-buttons-wrap flex flex-col sm:flex-row px-4 relative z-10 w-full sm:w-auto" style={{ marginTop: '32px', gap: '16px', justifyContent: 'center', alignItems: 'center' }}>
+        <button className="sg-btn flex items-center justify-center rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md transition-all duration-300 hover:border-purple-400/50 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:-translate-y-1 group" style={{ padding: '10px 24px', gap: '12px' }}>
           <div className="shrink-0 relative" style={{ width: '28px', height: '28px', flexShrink: 0 }}>
-            <Image 
-              src="/images/playstore.png" 
-              alt="Play Store" 
+            <Image
+              src="/images/playstore.png"
+              alt="Play Store"
               fill
               className="object-contain"
             />
@@ -89,11 +157,11 @@ export default function SupportedGamesSection({
           </div>
         </button>
 
-        <button className="flex items-center justify-center rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md transition-all duration-300 hover:border-purple-400/50 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:-translate-y-1 group" style={{ padding: '10px 24px', gap: '12px' }}>
+        <button className="sg-btn flex items-center justify-center rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md transition-all duration-300 hover:border-purple-400/50 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:-translate-y-1 group" style={{ padding: '10px 24px', gap: '12px' }}>
           <div className="shrink-0 relative" style={{ width: '28px', height: '28px', flexShrink: 0 }}>
-            <Image 
-              src="/images/apk.png" 
-              alt="App Store" 
+            <Image
+              src="/images/apk.png"
+              alt="App Store"
               fill
               className="object-contain"
             />

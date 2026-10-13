@@ -1,5 +1,14 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const footerLinks = {
   PLATFORM: [
@@ -16,9 +25,9 @@ const footerLinks = {
     { label: "X", href: "https://x.com" },
   ],
   SUPPORT: [
-    { label: "Help Center", href: "/help" },
+    { label: "Help Center", href: "/helpcenter" },
     { label: "Contact Us", href: "/contact" },
-    { label: "Report a Problem", href: "/report" },
+    { label: "Report a Problem", href: "/helpcenter" },
   ],
   LEGAL: [
     { label: "Terms & Conditions", href: "/terms" },
@@ -29,15 +38,91 @@ const footerLinks = {
 };
 
 export default function Footer() {
+  const footerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Brand / logo & tagline
+      gsap.fromTo(
+        ".ft-brand",
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: footerRef.current,
+            start: "top 88%",
+          },
+        }
+      );
+
+      // Links columns staggered entrance
+      gsap.fromTo(
+        ".ft-col",
+        { opacity: 0, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: footerRef.current,
+            start: "top 86%",
+          },
+        }
+      );
+
+      // Copyright row
+      gsap.fromTo(
+        ".ft-bottom",
+        { opacity: 0, y: 15 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".ft-bottom",
+            start: "top 95%",
+          },
+        }
+      );
+
+      // Huge Astra watermark entrance
+      gsap.fromTo(
+        ".ft-watermark",
+        { opacity: 0, y: 50, scale: 0.96 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".ft-watermark",
+            start: "top 95%",
+          },
+        }
+      );
+    }, footerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <footer className="relative w-full pt-32 pb-0 flex flex-col items-center bg-transparent overflow-hidden border-t border-white/[0.05] before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-[60%] before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-purple-500/60 before:to-transparent before:shadow-[0_0_30px_rgba(139,92,246,0.8)]">
-      
+    <footer
+      ref={footerRef}
+      className="relative w-full pt-32 pb-0 flex flex-col items-center bg-transparent overflow-hidden border-t border-white/[0.05] before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-[60%] before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-purple-500/60 before:to-transparent before:shadow-[0_0_30px_rgba(139,92,246,0.8)]"
+    >
       {/* Footer Content */}
       <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8 mb-16">
           
           {/* Logo & Tagline section */}
-          <div className="lg:col-span-2 flex flex-col space-y-6">
+          <div className="ft-brand lg:col-span-2 flex flex-col space-y-6">
             <Link href="/" className="inline-block transition-transform duration-300 hover:scale-105">
               <Image 
                 src="/images/astra_logo.png" 
@@ -54,7 +139,7 @@ export default function Footer() {
 
           {/* Links sections */}
           {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category} className="flex flex-col space-y-5">
+            <div key={category} className="ft-col flex flex-col space-y-5">
               <h3 className="text-white text-sm font-bold tracking-widest text-shadow-[0_0_10px_rgba(167,139,250,0.5)]">
                 {category}
               </h3>
@@ -77,7 +162,7 @@ export default function Footer() {
         </div>
         
         {/* Copyright text at the bottom of the links, no harsh border */}
-        <div className="flex flex-col sm:flex-row justify-between items-center text-zinc-500 text-xs font-medium tracking-wide pb-4">
+        <div className="ft-bottom flex flex-col sm:flex-row justify-between items-center text-zinc-500 text-xs font-medium tracking-wide pb-4">
           <p className="mb-4 sm:mb-0">© 2026 Astra. All rights reserved.</p>
           <div className="flex space-x-6">
             <Link href="/privacy" className="hover:text-zinc-300 transition-colors">Privacy Policy</Link>
@@ -87,7 +172,7 @@ export default function Footer() {
       </div>
 
       {/* Massive ASTRA text blended into the bottom */}
-      <div className="w-full flex justify-center items-end pointer-events-none select-none relative z-0 -mt-10 lg:-mt-20">
+      <div className="ft-watermark w-full flex justify-center items-end pointer-events-none select-none relative z-0 -mt-10 lg:-mt-20">
         
         {/* Dotted pattern background blending with the text */}
         <div 

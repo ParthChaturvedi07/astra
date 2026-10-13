@@ -1,6 +1,12 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 /* ── Testimonial data ── */
 const testimonials = [
@@ -141,6 +147,7 @@ function Stars({ count }: { count: number }) {
 }
 
 export default function TestimonialsSection() {
+  const sectionRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState(1);
 
   const prev = useCallback(
@@ -152,18 +159,117 @@ export default function TestimonialsSection() {
     []
   );
 
-  /* Auto-rotate every 6s */
-  useEffect(() => {
-    const timer = setInterval(next, 6000);
-    return () => clearInterval(timer);
-  }, [next]);
+  const [paused, setPaused] = useState(false);
 
-  /* Get visible cards: prev, active, next */
-  const getIdx = (offset: number) =>
-    (active + offset + testimonials.length) % testimonials.length;
+  /* Auto-rotate every 5s. Re-arms after every change (so manual clicks
+     restart the countdown) and pauses while the carousel is hovered. */
+  useEffect(() => {
+    if (paused) return;
+    const timer = setTimeout(next, 5000);
+    return () => clearTimeout(timer);
+  }, [active, paused, next]);
+
+  // GSAP ScrollTrigger Animations
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Header pill badge
+      gsap.fromTo(
+        ".test-badge",
+        { opacity: 0, y: -20, scale: 0.9 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          ease: "back.out(1.4)",
+          scrollTrigger: {
+            trigger: ".test-badge",
+            start: "top 85%",
+          },
+        }
+      );
+
+      // Title & description
+      gsap.fromTo(
+        ".test-title",
+        { opacity: 0, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".test-title",
+            start: "top 85%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".test-desc",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          delay: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".test-title",
+            start: "top 83%",
+          },
+        }
+      );
+
+      // Carousel & Navigation area
+      gsap.fromTo(
+        ".test-carousel-area",
+        { opacity: 0, y: 45, scale: 0.97 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.85,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".test-carousel-area",
+            start: "top 82%",
+          },
+        }
+      );
+
+      // Stats row cards staggered entrance
+      gsap.fromTo(
+        ".test-stat-card",
+        { opacity: 0, y: 45, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.75,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".test-stats-grid",
+            start: "top 86%",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  /* Signed position of card `i` relative to the active card, wrapped to
+     the shortest direction: -2, -1, 0, 1, 2 for 5 items. */
+  const getOffset = (i: number) => {
+    const n = testimonials.length;
+    const half = Math.floor(n / 2);
+    return ((i - active + n + half) % n) - half;
+  };
 
   return (
-    <section className="relative w-full py-12 bg-transparent overflow-hidden flex flex-col items-center" style={{ fontFamily: 'var(--font-main)' }}>
+    <section ref={sectionRef} id="testimonials" className="relative w-full py-12 bg-transparent overflow-hidden flex flex-col items-center" style={{ fontFamily: 'var(--font-main)' }}>
       {/* ── Background ambient glow ── */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-purple-700/10 blur-[140px] rounded-full" />
@@ -299,7 +405,7 @@ export default function TestimonialsSection() {
 
       <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-center">
         {/* ── Pill badge ── */}
-        <div className="flex items-center gap-2.5 bg-[#1a0f2e] border border-purple-500/30 rounded-full px-5 py-2 mb-8 shadow-[0_0_20px_rgba(167,139,250,0.15)]">
+        <div className="test-badge flex items-center gap-2.5 bg-[#1a0f2e] border border-purple-500/30 rounded-full px-5 py-2 mb-8 shadow-[0_0_20px_rgba(167,139,250,0.15)]">
           <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse shadow-[0_0_6px_rgba(167,139,250,0.8)]" />
           <span className="text-zinc-300 text-sm font-semibold tracking-[0.2em] uppercase">
             Testimonials
@@ -307,160 +413,175 @@ export default function TestimonialsSection() {
         </div>
 
         {/* ── Heading ── */}
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-4 leading-tight tracking-tight">
+        <h2 className="test-title text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-4 leading-tight tracking-tight">
           Hear Our Users{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-violet-300">
             Feedback
           </span>
         </h2>
-        <p className="text-zinc-400 text-base md:text-lg font-medium mb-16 text-center max-w-2xl leading-relaxed">
+        <p className="test-desc text-zinc-400 text-base md:text-lg font-medium mb-16 text-center max-w-2xl leading-relaxed">
           Join thousands of gamers and teams achieving more with Astra.
           Here&apos;s what they&apos;re saying about our platform and
           experience.
         </p>
 
         {/* ══════════════════════════════════════
-             Testimonial Carousel
+             Testimonial Carousel & Navigation
         ══════════════════════════════════════ */}
-        <div className="relative w-full flex items-center justify-center mb-12">
-          {/* Cards container */}
-          <div className="relative w-full flex items-center justify-center min-h-[320px] md:min-h-[300px]">
-            {[-1, 0, 1].map((offset) => {
-              const idx = getIdx(offset);
-              const t = testimonials[idx];
-              const isCenter = offset === 0;
+        <div className="test-carousel-area flex flex-col items-center w-full">
+          <div
+            className="relative w-full flex items-center justify-center mb-12"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            {/* Cards container */}
+            <div className="relative w-full flex items-center justify-center min-h-[320px] md:min-h-[300px] [--gap:75%] md:[--gap:110%]">
+              {/* All cards stay mounted (stable keys) so CSS can animate
+                  each one from its old position to its new one. */}
+              {testimonials.map((t, i) => {
+                const offset = getOffset(i);
+                const isCenter = offset === 0;
+                const isSide = Math.abs(offset) === 1;
+                const isHidden = Math.abs(offset) > 1;
 
-              return (
-                <div
-                  key={`${idx}-${offset}`}
-                  className={`
-                    absolute transition-all duration-700 ease-out
-                    ${
-                      isCenter
-                        ? "z-30 scale-100 opacity-100"
-                        : "z-10 scale-[0.85] opacity-50 blur-[1px]"
-                    }
-                    ${offset === -1 ? "-translate-x-[75%] md:-translate-x-[110%]" : ""}
-                    ${offset === 1 ? "translate-x-[75%] md:translate-x-[110%]" : ""}
-                  `}
-                  style={{ width: "min(420px, 85vw)" }}
-                >
+                return (
                   <div
-                    className={`
-                    relative rounded-2xl overflow-hidden
-                    ${
-                      isCenter
-                        ? "bg-[#0d0818]/95 border border-purple-500/40 shadow-[0_0_40px_rgba(124,58,237,0.25)]"
-                        : "bg-[#0d0818]/80 border border-white/[0.06] shadow-2xl"
-                    }
-                    p-6 md:p-8 flex flex-col items-center text-center
-                  `}
+                    key={t.name}
+                    aria-hidden={!isCenter}
+                    className="absolute"
+                    style={{
+                      width: "min(420px, 85vw)",
+                      transform: `translate3d(calc(${offset} * var(--gap)), 0, 0) scale(${
+                        isCenter ? 1 : isSide ? 0.85 : 0.7
+                      })`,
+                      opacity: isCenter ? 1 : isSide ? 0.5 : 0,
+                      filter: isCenter ? "blur(0px)" : "blur(1px)",
+                      zIndex: isCenter ? 30 : isSide ? 20 : 0,
+                      pointerEvents: isHidden ? "none" : "auto",
+                      transition:
+                        "transform 800ms cubic-bezier(0.22, 1, 0.36, 1), opacity 800ms ease, filter 800ms ease",
+                      willChange: "transform, opacity",
+                    }}
                   >
-                    {/* Subtle gradient overlay */}
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/5 via-transparent to-transparent pointer-events-none" />
+                    <div
+                      className={`
+                      relative rounded-2xl overflow-hidden transition-[background-color,border-color,box-shadow] duration-700
+                      ${
+                        isCenter
+                          ? "bg-[#0d0818]/95 border border-purple-500/40 shadow-[0_0_40px_rgba(124,58,237,0.25)]"
+                          : "bg-[#0d0818]/80 border border-white/[0.06] shadow-2xl"
+                      }
+                      p-6 md:p-8 flex flex-col items-center text-center
+                    `}
+                    >
+                      {/* Subtle gradient overlay */}
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/5 via-transparent to-transparent pointer-events-none" />
 
-                    {/* Avatar */}
-                    <div className="relative z-10 mb-4">
+                      {/* Avatar */}
+                      <div className="relative z-10 mb-4">
+                        <div
+                          className={`w-16 h-16 rounded-full overflow-hidden border-2 transition-[border-color,box-shadow] duration-700 ${
+                            isCenter
+                              ? "border-purple-500 shadow-[0_0_20px_rgba(124,58,237,0.5)]"
+                              : "border-purple-500/30"
+                          }`}
+                        >
+                          <img
+                            src={t.avatar}
+                            alt={t.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Name & Role */}
+                      <h4 className="relative z-10 text-white font-bold text-lg">
+                        {t.name}
+                      </h4>
+                      <span className="relative z-10 text-purple-400 text-sm font-medium mb-4">
+                        {t.role}
+                      </span>
+
+                      {/* Quote mark */}
                       <div
-                        className={`w-16 h-16 rounded-full overflow-hidden border-2 ${
-                          isCenter
-                            ? "border-purple-500 shadow-[0_0_20px_rgba(124,58,237,0.5)]"
-                            : "border-purple-500/30"
+                        className={`absolute top-4 right-6 text-purple-500/30 text-6xl font-serif leading-none select-none pointer-events-none z-0 transition-opacity duration-700 ${
+                          isCenter ? "opacity-100" : "opacity-0"
                         }`}
                       >
-                        <img
-                          src={t.avatar}
-                          alt={t.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Name & Role */}
-                    <h4 className="relative z-10 text-white font-bold text-lg">
-                      {t.name}
-                    </h4>
-                    <span className="relative z-10 text-purple-400 text-sm font-medium mb-4">
-                      {t.role}
-                    </span>
-
-                    {/* Quote mark */}
-                    {isCenter && (
-                      <div className="absolute top-4 right-6 text-purple-500/30 text-6xl font-serif leading-none select-none pointer-events-none z-0">
                         &ldquo;&rdquo;
                       </div>
-                    )}
 
-                    {/* Quote text */}
-                    <p
-                      className={`relative z-10 text-sm leading-relaxed font-medium ${
-                        isCenter ? "text-zinc-300" : "text-zinc-500"
-                      }`}
-                    >
-                      {t.quote}
-                    </p>
+                      {/* Quote text */}
+                      <p
+                        className={`relative z-10 text-sm leading-relaxed font-medium transition-colors duration-700 ${
+                          isCenter ? "text-zinc-300" : "text-zinc-500"
+                        }`}
+                      >
+                        {t.quote}
+                      </p>
 
-                    {/* Stars */}
-                    <div className="relative z-10">
-                      <Stars count={t.rating} />
+                      {/* Stars */}
+                      <div className="relative z-10">
+                        <Stars count={t.rating} />
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        {/* ── Navigation Arrows ── */}
-        <div className="flex items-center gap-3 mb-20">
-          <button
-            onClick={prev}
-            aria-label="Previous testimonial"
-            className="w-11 h-11 rounded-full border border-white/[0.12] bg-white/[0.04] flex items-center justify-center text-zinc-400 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300 backdrop-blur-sm"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+          {/* ── Navigation Arrows ── */}
+          <div className="flex items-center gap-3 mb-20">
+            <button
+              onClick={prev}
+              aria-label="Previous testimonial"
+              className="w-11 h-11 rounded-full border border-white/[0.12] bg-white/[0.04] flex items-center justify-center text-zinc-400 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300 backdrop-blur-sm"
             >
-              <path d="m15 18-6-6 6-6" />
-            </svg>
-          </button>
-          <button
-            onClick={next}
-            aria-label="Next testimonial"
-            className="w-11 h-11 rounded-full bg-purple-600 flex items-center justify-center text-white hover:bg-purple-500 transition-all duration-300 shadow-[0_0_20px_rgba(124,58,237,0.5)]"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              onClick={next}
+              aria-label="Next testimonial"
+              className="w-11 h-11 rounded-full bg-purple-600 flex items-center justify-center text-white hover:bg-purple-500 transition-all duration-300 shadow-[0_0_20px_rgba(124,58,237,0.5)]"
             >
-              <path d="m9 18 6-6-6-6" />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* ══════════════════════════════════════
              Stats Row
         ══════════════════════════════════════ */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 w-full">
+        <div className="test-stats-grid grid grid-cols-1 md:grid-cols-3 gap-5 w-full">
           {stats.map((stat, i) => (
             <div
               key={i}
-              className="relative rounded-2xl border border-purple-500/20 bg-[#0d0818]/80 backdrop-blur-md p-6 md:p-7 flex flex-col gap-3 group hover:border-purple-500/40 hover:shadow-[0_0_25px_rgba(124,58,237,0.15)] transition-all duration-300"
+              className="test-stat-card relative rounded-2xl border border-purple-500/20 bg-[#0d0818]/80 backdrop-blur-md p-6 md:p-7 flex flex-col gap-3 group hover:border-purple-500/40 hover:shadow-[0_0_25px_rgba(124,58,237,0.15)] transition-all duration-300"
             >
               {/* Subtle top glow */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/5 via-transparent to-transparent pointer-events-none" />

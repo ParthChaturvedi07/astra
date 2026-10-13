@@ -1,8 +1,113 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import DottedPatch from "@/components/DottedPatch";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function DynamicStreamingSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Pill badge
+      gsap.fromTo(
+        ".ds-badge",
+        { opacity: 0, y: -20, scale: 0.9 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          ease: "back.out(1.4)",
+          scrollTrigger: {
+            trigger: ".ds-badge",
+            start: "top 85%",
+          },
+        }
+      );
+
+      // Title & description
+      gsap.fromTo(
+        ".ds-title",
+        { opacity: 0, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".ds-title",
+            start: "top 85%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".ds-desc",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          delay: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".ds-title",
+            start: "top 83%",
+          },
+        }
+      );
+
+      // Streamer cards staggered entrance
+      gsap.fromTo(
+        ".ds-card",
+        { opacity: 0, y: 60, scale: 0.96 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.85,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".ds-cards-grid",
+            start: "top 82%",
+          },
+        }
+      );
+
+      // Community section and CTA
+      gsap.fromTo(
+        ".ds-cta",
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".ds-cta",
+            start: "top 88%",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative w-full py-24 bg-transparent overflow-hidden flex flex-col items-center">
+    <section
+      ref={sectionRef}
+      id="streaming"
+      className="relative w-full py-24 bg-transparent overflow-hidden flex flex-col items-center"
+    >
       <style>{`
         @keyframes marquee {
           0% { transform: translateX(0); }
@@ -16,6 +121,59 @@ export default function DynamicStreamingSection() {
         }
       `}</style>
 
+      {/* Background Dotted Patches */}
+      <DottedPatch
+        top="2%"
+        right="5%"
+        width={390}
+        height={270}
+        rotate={-12}
+        maskShape="ellipse"
+        glow
+        glowColor="rgba(124, 58, 237, 0.16)"
+        animate="float"
+      />
+      <DottedPatch
+        top="30%"
+        left="-30px"
+        width={380}
+        height={350}
+        rotate={10}
+        maskShape="fade-left"
+        dotColor="rgba(192, 132, 252, 0.35)"
+      />
+      <DottedPatch
+        top="38%"
+        right="-20px"
+        width={370}
+        height={330}
+        rotate={-15}
+        maskShape="fade-right"
+        dotColor="rgba(124, 58, 237, 0.4)"
+        spacing={18}
+      />
+      <DottedPatch
+        top="46%"
+        left="45%"
+        width={270}
+        height={270}
+        rotate={6}
+        maskShape="circle"
+        dotColor="rgba(167, 139, 250, 0.32)"
+        animate="pulse"
+      />
+      <DottedPatch
+        bottom="0%"
+        right="35%"
+        width={380}
+        height={230}
+        rotate={8}
+        maskShape="pill"
+        glow
+        glowColor="rgba(167, 139, 250, 0.12)"
+        animate="float"
+      />
+
       {/* Background ambient glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-purple-700/10 blur-[120px] rounded-full" />
@@ -24,7 +182,7 @@ export default function DynamicStreamingSection() {
       <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-center">
 
         {/* Pill badge */}
-        <div className="flex items-center gap-2.5 bg-[#1a0f2e] border border-purple-500/30 rounded-full px-5 py-2 mb-8 shadow-[0_0_20px_rgba(167,139,250,0.15)]">
+        <div className="ds-badge flex items-center gap-2.5 bg-[#1a0f2e] border border-purple-500/30 rounded-full px-5 py-2 mb-8 shadow-[0_0_20px_rgba(167,139,250,0.15)]">
           <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse shadow-[0_0_6px_rgba(167,139,250,0.8)]" />
           <span className="text-zinc-300 text-sm font-semibold tracking-[0.2em] uppercase">Live</span>
           <span className="w-1 h-1 rounded-full bg-zinc-500" />
@@ -34,22 +192,22 @@ export default function DynamicStreamingSection() {
         </div>
 
         {/* Heading */}
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-5 leading-tight tracking-tight">
+        <h2 className="ds-title text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-5 leading-tight tracking-tight">
           Dynamic{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-violet-300">
             Streaming
           </span>{" "}
           Experience
         </h2>
-        <p className="text-zinc-400 text-lg md:text-xl font-medium mb-14 text-center">
+        <p className="ds-desc text-zinc-400 text-lg md:text-xl font-medium mb-14 text-center">
           Empower Your Gameplay with Live Streaming
         </p>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full">
+        <div className="ds-cards-grid grid grid-cols-1 lg:grid-cols-2 gap-5 w-full">
 
           {/* Card 1 */}
-          <div className="relative bg-[#0d0818]/90 border border-white/[0.06] rounded-[1.75rem] overflow-hidden group shadow-2xl h-[380px]">
+          <div className="ds-card relative bg-[#0d0818]/90 border border-white/[0.06] rounded-[1.75rem] overflow-hidden group shadow-2xl h-[380px]">
             {/* Inner subtle border glow */}
             <div className="absolute inset-0 rounded-[1.75rem] bg-gradient-to-br from-purple-500/5 via-transparent to-transparent pointer-events-none" />
 
@@ -116,7 +274,7 @@ export default function DynamicStreamingSection() {
           </div>
 
           {/* Card 2 */}
-          <div className="relative bg-[#0d0818]/90 border border-white/[0.06] rounded-[1.75rem] overflow-hidden group shadow-2xl h-[380px]">
+          <div className="ds-card relative bg-[#0d0818]/90 border border-white/[0.06] rounded-[1.75rem] overflow-hidden group shadow-2xl h-[380px]">
             <div className="absolute inset-0 rounded-[1.75rem] bg-gradient-to-br from-purple-500/5 via-transparent to-transparent pointer-events-none" />
 
             {/* Marquee background game icons - Row 1 */}
@@ -185,7 +343,7 @@ export default function DynamicStreamingSection() {
         </div>
 
         {/* Call to Action & Community Section */}
-        <div className="mt-20 flex flex-col items-center gap-10 w-full max-w-4xl">
+        <div className="ds-cta mt-20 flex flex-col items-center gap-10 w-full max-w-4xl">
           
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row items-center gap-5 w-full justify-center">

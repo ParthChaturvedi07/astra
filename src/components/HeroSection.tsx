@@ -108,7 +108,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section ref={heroRef} className="hero-section">
+    <section ref={heroRef} id="home" className="hero-section">
       {/* ── Background giant ASTRA text ── */}
       <div ref={bgTextRef} className="hero-bg-text-wrapper">
         <span className="hero-bg-text">ASTRA</span>

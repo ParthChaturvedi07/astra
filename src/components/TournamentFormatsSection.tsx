@@ -1,6 +1,14 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import DottedPatch from "@/components/DottedPatch";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const formats = [
   {
@@ -56,24 +64,173 @@ const formats = [
 ];
 
 export default function TournamentFormatsSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Header tag
+      gsap.fromTo(
+        ".tf-header-tag",
+        { opacity: 0, x: -25 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.6,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".tf-header",
+            start: "top 85%",
+          },
+        }
+      );
+
+      // Header title
+      gsap.fromTo(
+        ".tf-header-title",
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".tf-header",
+            start: "top 82%",
+          },
+        }
+      );
+
+      // Header description
+      gsap.fromTo(
+        ".tf-header-desc",
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          delay: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".tf-header",
+            start: "top 80%",
+          },
+        }
+      );
+
+      // Popular maps box
+      gsap.fromTo(
+        ".tf-maps-box",
+        { opacity: 0, x: 40, scale: 0.95 },
+        {
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".tf-maps-box",
+            start: "top 85%",
+          },
+        }
+      );
+
+      // 5 Format Cards Staggered Reveal
+      gsap.fromTo(
+        ".tf-card",
+        { opacity: 0, y: 55, scale: 0.96 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.75,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".tf-cards-grid",
+            start: "top 85%",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="w-full relative py-20 px-4 sm:px-8 md:px-12 lg:px-16 mx-auto z-20">
+    <section
+      ref={sectionRef}
+      id="tournaments"
+      className="w-full relative py-20 px-4 sm:px-8 md:px-12 lg:px-16 mx-auto z-20 overflow-hidden"
+    >
+      {/* Background Dotted Patches */}
+      <DottedPatch
+        top="25%"
+        right="-10%"
+        width={440}
+        height={300}
+        rotate={-12}
+        maskShape="ellipse"
+        glow
+        glowColor="rgba(124, 58, 237, 0.18)"
+        animate="float"
+      />
+      <DottedPatch
+        top="8%"
+        left="-10px"
+        width={360}
+        height={260}
+        rotate={8}
+        maskShape="soft"
+        dotColor="rgba(192, 132, 252, 0.35)"
+      />
+      <DottedPatch
+        top="44%"
+        left="1%"
+        width={400}
+        height={350}
+        rotate={-14}
+        maskShape="fade-left"
+        dotColor="rgba(124, 58, 237, 0.4)"
+        spacing={18}
+      />
+      <DottedPatch
+        top="48%"
+        right="0%"
+        width={370}
+        height={320}
+        rotate={11}
+        maskShape="circle"
+        dotColor="rgba(167, 139, 250, 0.35)"
+        animate="pulse"
+      />
+      <DottedPatch
+        bottom="2%"
+        left="28%"
+        width={350}
+        height={220}
+        rotate={15}
+        maskShape="pill"
+        glow
+        glowColor="rgba(167, 139, 250, 0.12)"
+        animate="float"
+      />
+
       {/* Top Header Section */}
-      <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-12 mb-12 sm:mb-16">
+      <div className="tf-header flex flex-col xl:flex-row justify-between items-start xl:items-center gap-12 mb-12 sm:mb-16">
 
         {/* Left: Titles & Desc */}
         <div className="max-w-2xl flex flex-col gap-4">
-          <div className="flex items-center gap-4">
+          <div className="tf-header-tag flex items-center gap-4">
             <span className="text-purple-300 font-semibold tracking-[0.2em] text-[10px] uppercase">Game Modes</span>
             <div className="h-[1px] w-12 bg-purple-400/30"></div>
           </div>
 
-          <h2 className="text-5xl sm:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tighter text-white uppercase flex flex-col">
+          <h2 className="tf-header-title text-5xl sm:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tighter text-white uppercase flex flex-col">
             <span>Tournament</span>
             <span className="text-[#7c3aed]">Formats</span>
           </h2>
 
-          <p className="text-purple-200/80 text-sm sm:text-base max-w-lg leading-relaxed mt-2 font-medium">
+          <p className="tf-header-desc text-purple-200/80 text-sm sm:text-base max-w-lg leading-relaxed mt-2 font-medium">
             Choose your style. From intense solo showdowns to high-octane squad battles, Astra hosts a variety of match formats across iconic maps. There&apos;s a battlefield for every kind of player.
           </p>
         </div>
@@ -88,7 +245,7 @@ export default function TournamentFormatsSection() {
           </div>
 
           {/* Popular Maps Box */}
-          <div className="rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md p-4 sm:p-5 flex flex-col gap-4 shadow-[0_0_30px_rgba(124,58,237,0.1)] w-full sm:w-max max-w-full overflow-hidden">
+          <div className="tf-maps-box rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md p-4 sm:p-5 flex flex-col gap-4 shadow-[0_0_30px_rgba(124,58,237,0.1)] w-full sm:w-max max-w-full overflow-hidden">
             <div className="flex items-center gap-2 text-[10px] font-bold text-purple-300 uppercase tracking-widest shrink-0">
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
               Popular Maps
@@ -116,9 +273,9 @@ export default function TournamentFormatsSection() {
       </div>
 
       {/* Cards Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5 xl:gap-6">
+      <div className="tf-cards-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5 xl:gap-6">
         {formats.map((format, idx) => (
-          <div key={idx} className="relative rounded-2xl border border-purple-400/20 bg-[#150a2e] backdrop-blur-md overflow-hidden group hover:border-purple-400/50 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_0_25px_rgba(124,58,237,0.2)] hover:-translate-y-1 flex flex-col">
+          <div key={idx} className="tf-card relative rounded-2xl border border-purple-400/20 bg-[#150a2e] backdrop-blur-md overflow-hidden group hover:border-purple-400/50 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_0_25px_rgba(124,58,237,0.2)] hover:-translate-y-1 flex flex-col">
 
             {/* Background Image */}
             <div className="absolute top-0 inset-x-0 z-0 h-[160px] sm:h-[190px] overflow-hidden">

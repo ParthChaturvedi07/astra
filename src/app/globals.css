@@ -19,25 +19,39 @@
   --font-main: "Inter", sans-serif;
 }
 
-html,
-body {
-  height: 100%;
-  overflow-x: hidden;
+html {
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;      /* only on html, so the window stays the scroller */
   scrollbar-width: none;
-  /* scrollbar-color: var(--purple-light) var(--purple-deep); */
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+section[id] {
+  scroll-margin-top: 80px;
 }
 
 body {
+  min-height: 100%; /* no fixed height, no overflow here */
+  overflow-x: clip;         
   font-family: var(--font-main);
-  background: var(--bg);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
-  background: linear-gradient(160deg,
+  background-color: #0c051a;
+  background-image: linear-gradient(160deg,
       #0c051a 0%,
       #090314 20%,
       #13062b 50%,
       #1a073f 75%,
       #0d041c 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;  /* keeps the gradient fixed behind the page, as before */
 }
 
 /* ─────────────────────────────────────────────
@@ -300,7 +314,10 @@ body {
 }
 
 .nav-mobile-cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   width: 100%;
   text-align: center;
   background: #7c3aed;
@@ -945,7 +962,7 @@ body {
   right: -2%;
   width: 48%;
   max-width: 700px;
-  z-index: 0;
+  z-index: 2;
   pointer-events: none;
   overflow: visible;
 }
@@ -974,8 +991,8 @@ body {
 .htp-bg-text-wrapper {
   position: absolute;
   top: 5%;
-  right: 30%;
-  z-index: 1;
+  right: 35%;
+  z-index: -1;
   pointer-events: none;
   display: flex;
   flex-direction: column;
@@ -985,13 +1002,13 @@ body {
 }
 
 .htp-bg-text-line {
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(3rem, 6vw, 4.5rem);
   font-weight: 900;
   color: rgba(167, 139, 250, 0.06);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   user-select: none;
-  line-height: 1;
+  line-height: 0.9;
 }
 
 /* ── Content Wrapper ── */
@@ -1575,6 +1592,7 @@ body {
   white-space: nowrap;
 }
 
+
 /* ─────────────────────────────────────────────
    How To Play — Responsive
 ───────────────────────────────────────────── */
@@ -1744,4 +1762,33 @@ body {
 
 .carousel-pause-on-hover:hover .carousel-track {
   animation-play-state: paused;
+}
+
+/* ─────────────────────────────────────────────
+   Dotted Background Patches Animations
+───────────────────────────────────────────── */
+@keyframes dotFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(var(--patch-rot, 0deg));
+  }
+  50% {
+    transform: translateY(-8px) rotate(var(--patch-rot, 0deg));
+  }
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    opacity: var(--patch-opacity, 0.7);
+  }
+  50% {
+    opacity: calc(var(--patch-opacity, 0.7) * 0.65);
+  }
+}
+
+.animate-dot-float {
+  animation: dotFloat 9s ease-in-out infinite;
+}
+
+.animate-dot-pulse {
+  animation: dotPulse 6s ease-in-out infinite;
 }
