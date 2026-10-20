@@ -110,7 +110,7 @@ export default function HowToPlaySection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header animation
+      // Header animation - triggers when section is comfortably in view
       gsap.fromTo(
         ".htp-header-label",
         { opacity: 0, x: -30 },
@@ -120,8 +120,8 @@ export default function HowToPlaySection() {
           duration: 0.6,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: ".htp-header",
-            start: "top 85%",
+            trigger: sectionRef.current,
+            start: "top 65%",
           },
         }
       );
@@ -135,8 +135,8 @@ export default function HowToPlaySection() {
           duration: 0.8,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: ".htp-header",
-            start: "top 80%",
+            trigger: sectionRef.current,
+            start: "top 65%",
           },
         }
       );
@@ -148,49 +148,33 @@ export default function HowToPlaySection() {
           opacity: 1,
           y: 0,
           duration: 0.7,
-          delay: 0.2,
+          delay: 0.15,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: ".htp-header",
-            start: "top 78%",
+            trigger: sectionRef.current,
+            start: "top 65%",
           },
         }
       );
 
-      // Step cards stagger
+      // Step cards stagger - triggers as the cards grid enters view
       gsap.fromTo(
         ".htp-step-card",
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 45 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.7,
+          duration: 0.75,
           stagger: 0.15,
           ease: "power3.out",
           scrollTrigger: {
             trigger: ".htp-cards-grid",
-            start: "top 82%",
+            start: "top 70%",
           },
         }
       );
 
-      // Reward card
-      gsap.fromTo(
-        ".htp-reward-card",
-        { opacity: 0, x: 40 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".htp-reward-card",
-            start: "top 85%",
-          },
-        }
-      );
-
-      // Stats bar
+      // Stats bar - triggers when scrolling down towards the stats bar
       gsap.fromTo(
         ".htp-stats-bar",
         { opacity: 0, y: 30 },
@@ -201,35 +185,43 @@ export default function HowToPlaySection() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: ".htp-stats-bar",
-            start: "top 90%",
+            start: "top 85%",
           },
         }
       );
 
-      // Reveal background characters from bottom on reaching the section
+      // Reveal background characters - rises up smoothly when reaching the section
       gsap.fromTo(
         ".htp-bg-char",
         {
           opacity: 0,
-          y: 180,
-          scale: 0.95,
+          y: 160,
+          scale: 0.85,
         },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 1.2,
+          duration: 1.5,
           ease: "power3.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 80%",
+            start: "top 55%",
             toggleActions: "play none none reverse",
           },
         }
       );
     }, sectionRef);
 
-    return () => ctx.revert();
+    // Refresh ScrollTrigger once DOM/images settle to prevent premature triggering
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 400);
+
+    return () => {
+      clearTimeout(refreshTimer);
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -412,7 +404,7 @@ export default function HowToPlaySection() {
           ))}
 
           {/* ── Reward Redemption Card ── */}
-          <div className="htp-reward-card">
+          {/* <div className="htp-reward-card">
             <div className="htp-card-glow" />
 
             <div className="htp-reward-header">
@@ -420,9 +412,9 @@ export default function HowToPlaySection() {
               <p className="htp-reward-sub">Turn your wins into real rewards.</p>
             </div>
 
-            <div className="htp-reward-options">
+            <div className="htp-reward-options"> */}
               {/* UPI Payout */}
-              <div className="htp-reward-option">
+              {/* <div className="htp-reward-option">
                 <div className="htp-reward-icon-wrapper htp-reward-upi">
                  <Image src={'/images/howtoplay/upi.png'} alt="UPI" width={20} height={20} className="htp-upi-icon" />
                 </div>
@@ -431,10 +423,10 @@ export default function HowToPlaySection() {
                   <span className="htp-reward-detail">Directly to your bank account.</span>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="htp-reward-chevron"><path d="m9 18 6-6-6-6" /></svg>
-              </div>
+              </div> */}
 
               {/* Google Play Voucher */}
-              <div className="htp-reward-option">
+              {/* <div className="htp-reward-option">
                 <div className="htp-reward-icon-wrapper htp-reward-gplay">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                     <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.61 3 21.09 3 20.5Z" fill="#4285F4"/>
@@ -448,11 +440,11 @@ export default function HowToPlaySection() {
                   <span className="htp-reward-detail">Redeem for your favourite apps &amp; games.</span>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="htp-reward-chevron"><path d="m9 18 6-6-6-6" /></svg>
-              </div>
+              </div> */}
             </div>
 
             {/* Redeem Now Button */}
-            <button className="htp-redeem-btn">
+            {/* <button className="htp-redeem-btn">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6" />
                 <path d="M12 12V3" />
@@ -464,7 +456,7 @@ export default function HowToPlaySection() {
               </svg>
             </button>
           </div>
-        </div>
+        </div> */}
 
         {/* ── Stats Bar ── */}
         <div className="htp-stats-bar">

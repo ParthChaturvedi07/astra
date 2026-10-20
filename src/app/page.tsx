@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import SupportedGamesSection from "@/components/SupportedGamesSection";
 import TournamentFormatsSection from "@/components/TournamentFormatsSection";
 import HowToPlaySection from "@/components/HowToPlaySection";
+import PlayWinWithdrawSection from "@/components/PlayWinWithdrawSection";
 import DynamicStreamingSection from "@/components/DynamicStreamingSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
@@ -13,6 +14,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <SupportedGamesSection />
+      <PlayWinWithdrawSection />
       <TournamentFormatsSection />
       <HowToPlaySection />
       <DynamicStreamingSection />

@@ -958,9 +958,9 @@ body {
 /* ── Background Character ── */
 .htp-bg-char-wrapper {
   position: absolute;
-  top: 8%;
-  right: -2%;
-  width: 48%;
+  bottom: 10%;
+  right: -6%;
+  width: 45%;
   max-width: 700px;
   z-index: 2;
   pointer-events: none;
@@ -971,7 +971,7 @@ body {
   width: 100%;
   height: auto;
   object-fit: contain;
-  opacity: 0.35;
+  opacity: 0.50;
   -webkit-mask-image: linear-gradient(
     to bottom,
     black 0%,
@@ -990,8 +990,8 @@ body {
 /* ── Background "PLAY COMPETE BELONG" text ── */
 .htp-bg-text-wrapper {
   position: absolute;
-  top: 5%;
-  right: 35%;
+  top: 0;
+  right: 5%;
   z-index: -1;
   pointer-events: none;
   display: flex;
@@ -1335,7 +1335,7 @@ body {
 }
 
 /* ── Reward Redemption Card ── */
-.htp-reward-card {
+/* .htp-reward-card {
   position: relative;
   border-radius: 1rem;
   border: 1px solid rgba(124, 58, 237, 0.25);
@@ -1378,10 +1378,10 @@ body {
   font-size: 0.72rem;
   color: rgba(196, 181, 253, 0.6);
   font-weight: 400;
-}
+} */
 
 /* Reward Options */
-.htp-reward-options {
+/* .htp-reward-options {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -1459,10 +1459,10 @@ body {
 
 .htp-reward-option:hover .htp-reward-chevron {
   color: var(--purple-glow);
-}
+} */
 
 /* Redeem Now Button */
-.htp-redeem-btn {
+/* .htp-redeem-btn {
   margin-top: auto;
   display: flex;
   align-items: center;
@@ -1486,7 +1486,7 @@ body {
   background: rgba(124, 58, 237, 0.35);
   border-color: rgba(124, 58, 237, 0.7);
   box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
-}
+} */
 
 /* ── Stats Bar ── */
 .htp-stats-bar {
@@ -1725,6 +1725,750 @@ body {
 
   .htp-bg-text-wrapper {
     display: none;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Play · Win · Withdraw Section
+───────────────────────────────────────────── */
+.pww-section {
+  position: relative;
+  width: 100%;
+  padding: 6.5rem 4% 4.5rem;
+  overflow: hidden;
+  z-index: 20;
+}
+
+/* ── Giant background "PLAY WIN WITHDRAW" text ── */
+.pww-bg-text-wrapper {
+  position: absolute;
+  top: 1%;
+  right: 4%;
+  z-index: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+  line-height: 0.88;
+}
+
+.pww-bg-text-line {
+  font-size: clamp(3.2rem, 7vw, 5.5rem);
+  font-weight: 900;
+  color: rgba(167, 139, 250, 0.045);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  user-select: none;
+  line-height: 0.88;
+}
+
+/* ── Ambient Radial Lighting ── */
+.pww-ambient-light {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 65% 55% at 75% 42%, rgba(124, 58, 237, 0.16), transparent 70%),
+    radial-gradient(circle at 10% 75%, rgba(167, 139, 250, 0.08), transparent 50%);
+}
+
+/* ── Main Container ── */
+.pww-container {
+  position: relative;
+  z-index: 5;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* ── 2-Column Stage ── */
+.pww-stage {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+/* ── Left Column ── */
+.pww-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 620px;
+}
+
+/* ── Header ── */
+.pww-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.pww-header-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.2rem;
+}
+
+.pww-tag-text {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--purple-light);
+  text-transform: uppercase;
+}
+
+.pww-tag-line {
+  height: 1px;
+  width: 3rem;
+  background: linear-gradient(90deg, var(--purple-light), transparent);
+}
+
+.pww-title {
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-weight: 900;
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.pww-grad-text {
+  background: linear-gradient(135deg, #7c3aed 0%, #c084fc 45%, #e879f9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(192, 132, 252, 0.4));
+}
+
+.pww-lead {
+  font-size: 0.92rem;
+  line-height: 1.68;
+  color: rgba(196, 181, 253, 0.78);
+  max-width: 520px;
+  font-weight: 400;
+}
+
+/* ── Step Progression Cards ── */
+.pww-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pww-step-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+  padding: 1.05rem 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  background: linear-gradient(
+    145deg,
+    rgba(26, 12, 54, 0.65) 0%,
+    rgba(14, 6, 30, 0.75) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pww-step-card:hover {
+  border-color: rgba(167, 139, 250, 0.45);
+  background: linear-gradient(
+    145deg,
+    rgba(35, 16, 72, 0.8) 0%,
+    rgba(18, 8, 40, 0.85) 100%
+  );
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.22), 0 8px 24px rgba(0, 0, 0, 0.4);
+  transform: translateX(4px);
+}
+
+.pww-step-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.pww-step-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.pww-step-purple .pww-step-icon-box {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(91, 33, 182, 0.15));
+  border: 1px solid rgba(124, 58, 237, 0.45);
+  color: var(--purple-glow);
+  box-shadow: 0 0 16px rgba(124, 58, 237, 0.25);
+}
+
+.pww-step-purple-glow .pww-step-icon-box {
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.25), rgba(124, 58, 237, 0.2));
+  border: 1px solid rgba(192, 132, 252, 0.4);
+  color: #e9d5ff;
+  box-shadow: 0 0 16px rgba(192, 132, 252, 0.25);
+}
+
+.pww-step-purple-bright .pww-step-icon-box {
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.35), rgba(124, 58, 237, 0.2));
+  border: 1px solid rgba(167, 139, 250, 0.45);
+  color: #e9d5ff;
+  box-shadow: 0 0 16px rgba(147, 51, 234, 0.25);
+}
+
+.pww-step-card:hover .pww-step-icon-box {
+  transform: scale(1.08);
+  box-shadow: 0 0 22px rgba(124, 58, 237, 0.4);
+}
+
+.pww-step-connector {
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(180deg, rgba(167, 139, 250, 0.35), rgba(124, 58, 237, 0.08));
+  border-radius: 2px;
+  margin-top: 6px;
+}
+
+.pww-step-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+}
+
+.pww-step-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.12rem;
+}
+
+.pww-step-num {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: rgba(167, 139, 250, 0.65);
+  letter-spacing: 0.08em;
+  font-family: monospace;
+}
+
+.pww-step-badge {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.55rem;
+  border-radius: 4px;
+  background: rgba(124, 58, 237, 0.16);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  color: var(--purple-light);
+}
+
+.pww-step-purple-bright .pww-step-badge {
+  background: rgba(147, 51, 234, 0.2);
+  border-color: rgba(167, 139, 250, 0.35);
+  color: #e9d5ff;
+}
+
+.pww-step-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.pww-step-desc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(196, 181, 253, 0.68);
+  font-weight: 400;
+}
+
+/* ── CTA Group ── */
+.pww-cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-top: 0.5rem;
+}
+
+.pww-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.pww-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 50px;
+  border: 1px solid rgba(192, 132, 252, 0.4);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.45);
+  transition: all 0.25s ease;
+}
+
+.pww-btn-primary:hover {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.7);
+}
+
+.pww-btn-arrow {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.pww-btn-primary:hover .pww-btn-arrow {
+  transform: translateX(3px);
+}
+
+.pww-rate-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1rem;
+  border-radius: 50px;
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.pww-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c084fc;
+  box-shadow: 0 0 8px #c084fc;
+  animation: pww-pulse 2s infinite;
+}
+
+.pww-rate-highlight {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+.pww-rate-sub {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: rgba(196, 181, 253, 0.7);
+}
+
+/* Trust Bar */
+.pww-trust-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 0.25rem;
+}
+
+.pww-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(196, 181, 253, 0.65);
+}
+
+.pww-trust-item svg {
+  color: var(--purple-light);
+}
+
+.pww-trust-divider {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(167, 139, 250, 0.35);
+}
+
+/* ═══════════════════════════════════════════════
+   Phone Showcase (Right Column)
+═══════════════════════════════════════════════ */
+.pww-phone-stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 540px;
+}
+
+.pww-phone-backdrop-glow {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pww-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(75px);
+  opacity: 0.6;
+}
+
+.pww-glow-purple {
+  width: 380px;
+  height: 380px;
+  background: rgba(124, 58, 237, 0.28);
+  top: 15%;
+  left: 10%;
+}
+
+.pww-glow-violet {
+  width: 280px;
+  height: 280px;
+  background: rgba(167, 139, 250, 0.18);
+  bottom: 15%;
+  right: 10%;
+}
+
+.pww-phone-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 540px;
+}
+
+.pww-phone-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 30px rgba(124, 58, 237, 0.25));
+}
+
+/* ═══════════════════════════════════════════════
+   Payout Methods Showcase
+═══════════════════════════════════════════════ */
+.pww-payouts {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.pww-payout-card {
+  position: relative;
+  border-radius: 1.25rem;
+  padding: 1.6rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pww-payout-card:hover {
+  transform: translateY(-4px);
+}
+
+.pww-payout-upi {
+  background: linear-gradient(
+    160deg,
+    rgba(30, 15, 60, 0.85) 0%,
+    rgba(20, 10, 48, 0.9) 50%,
+    rgba(12, 5, 28, 0.95) 100%
+  );
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+}
+
+.pww-payout-upi:hover {
+  border-color: rgba(167, 139, 250, 0.55);
+  box-shadow: 0 0 35px rgba(124, 58, 237, 0.22), 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.pww-payout-play {
+  background: linear-gradient(
+    160deg,
+    rgba(124, 58, 237, 0.1) 0%,
+    rgba(20, 10, 48, 0.88) 50%,
+    rgba(12, 5, 28, 0.95) 100%
+  );
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+}
+
+.pww-payout-play:hover {
+  border-color: rgba(167, 139, 250, 0.55);
+  box-shadow: 0 0 35px rgba(124, 58, 237, 0.22), 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.pww-payout-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pww-payout-logo-box {
+  width: 76px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pww-payout-logo-upi {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.35rem 0.65rem;
+}
+
+.pww-payout-logo-play {
+  background: rgba(124, 58, 237, 0.14);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+}
+
+.pww-payout-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pww-badge-purple {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 50px;
+  background: rgba(124, 58, 237, 0.18);
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  color: var(--purple-light);
+}
+
+.pww-badge-micro {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.22rem 0.55rem;
+  border-radius: 50px;
+}
+
+.pww-payout-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.pww-payout-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+}
+
+.pww-payout-desc {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: rgba(196, 181, 253, 0.7);
+  font-weight: 400;
+}
+
+.pww-payout-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(167, 139, 250, 0.12);
+  flex-wrap: wrap;
+}
+
+.pww-payout-features {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.pww-payout-pill {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+}
+
+.pww-payout-action {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--purple-light);
+  transition: all 0.25s ease;
+}
+
+.pww-payout-upi:hover .pww-payout-action {
+  color: var(--purple-glow);
+  transform: translateX(3px);
+}
+
+.pww-payout-play:hover .pww-payout-action {
+  color: #c084fc;
+  transform: translateX(3px);
+}
+
+@keyframes pww-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Play · Win · Withdraw — Responsive
+───────────────────────────────────────────── */
+
+/* Tablet (≤ 1024px) */
+@media (max-width: 1024px) {
+  .pww-section {
+    padding: 5rem 3% 4rem;
+  }
+
+  .pww-stage {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .pww-left {
+    max-width: 100%;
+  }
+
+  .pww-phone-stage {
+    min-height: 480px;
+  }
+
+  .pww-phone-wrap {
+    max-width: 480px;
+  }
+}
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  .pww-section {
+    padding: 4rem 4% 3rem;
+  }
+
+  .pww-container {
+    gap: 2.5rem;
+  }
+
+  .pww-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .pww-payouts {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .pww-trust-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .pww-trust-divider {
+    display: none;
+  }
+
+  .pww-phone-wrap {
+    max-width: 380px;
+  }
+
+  .pww-bg-text-wrapper {
+    display: none;
+  }
+}
+
+/* Small mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .pww-section {
+    padding: 3rem 3.5% 2.5rem;
+  }
+
+  .pww-step-card {
+    padding: 0.9rem 1rem;
+    gap: 0.85rem;
+  }
+
+  .pww-step-icon-box {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .pww-phone-stage {
+    min-height: 360px;
+  }
+
+  .pww-phone-wrap {
+    max-width: 320px;
+  }
+
+  .pww-payout-card {
+    padding: 1.25rem 1.15rem;
   }
 }
 
