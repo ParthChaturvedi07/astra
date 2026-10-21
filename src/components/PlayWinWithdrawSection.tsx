@@ -344,8 +344,8 @@ export default function PlayWinWithdrawSection() {
             {/* Animated phone container */}
             <div ref={phoneRef} className="pww-phone-wrap">
               <Image
-                src="/images/rewards/rewards-phone.png"
-                alt="Astra Wallet – Points balance & UPI withdrawal"
+                src="/images/rewardssection/rewards-phone.png"
+                alt="Astra Wallet – Points balance, recent activity and UPI withdrawal"
                 width={620}
                 height={720}
                 className="pww-phone-img"
