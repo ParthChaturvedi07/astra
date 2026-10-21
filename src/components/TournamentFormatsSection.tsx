@@ -51,16 +51,7 @@ const formats = [
     map: { name: "Erangel", image: "/images/tournamentformat/erangel.png" },
     image: "/images/tournamentformat/classic_drop.png"
   },
-  {
-    id: "05",
-    title: "QUICK MATCHES",
-    desc: "Short, intense, and non-stop action for those who crave instant combat. Drop into smaller zones and test your reflexes in rapid-fire brawls.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
-    ),
-    map: { name: "Purgatory", image: "/images/tournamentformat/purgatory.png" },
-    image: "/images/tournamentformat/quick_match.png"
-  }
+
 ];
 
 export default function TournamentFormatsSection() {
@@ -273,7 +264,7 @@ export default function TournamentFormatsSection() {
       </div>
 
       {/* Cards Section */}
-      <div className="tf-cards-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5 xl:gap-6">
+      <div className="tf-cards-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 xl:gap-6">
         {formats.map((format, idx) => (
           <div key={idx} className="tf-card relative rounded-2xl border border-purple-400/20 bg-[#150a2e] backdrop-blur-md overflow-hidden group hover:border-purple-400/50 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_0_25px_rgba(124,58,237,0.2)] hover:-translate-y-1 flex flex-col">
 

@@ -6,6 +6,7 @@ import HowToPlaySection from "@/components/HowToPlaySection";
 import PlayWinWithdrawSection from "@/components/PlayWinWithdrawSection";
 import DynamicStreamingSection from "@/components/DynamicStreamingSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <HowToPlaySection />
       <DynamicStreamingSection />
       <TestimonialsSection />
+      {/* <ContactSection /> */}
       <Footer />
     </main>
   );

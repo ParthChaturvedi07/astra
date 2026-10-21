@@ -105,7 +105,7 @@ export default function DynamicStreamingSection() {
   return (
     <section
       ref={sectionRef}
-      id="streaming"
+      id="community"
       className="relative w-full py-24 bg-transparent overflow-hidden flex flex-col items-center"
     >
       <style>{`
@@ -184,23 +184,23 @@ export default function DynamicStreamingSection() {
         {/* Pill badge */}
         <div className="ds-badge flex items-center gap-2.5 bg-[#1a0f2e] border border-purple-500/30 rounded-full px-5 py-2 mb-8 shadow-[0_0_20px_rgba(167,139,250,0.15)]">
           <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse shadow-[0_0_6px_rgba(167,139,250,0.8)]" />
-          <span className="text-zinc-300 text-sm font-semibold tracking-[0.2em] uppercase">Live</span>
+          <span className="text-zinc-300 text-sm font-semibold tracking-[0.2em] uppercase">Connect</span>
           <span className="w-1 h-1 rounded-full bg-zinc-500" />
-          <span className="text-zinc-300 text-sm font-semibold tracking-[0.2em] uppercase">Stream</span>
+          <span className="text-zinc-300 text-sm font-semibold tracking-[0.2em] uppercase">Create</span>
           <span className="w-1 h-1 rounded-full bg-zinc-500" />
-          <span className="text-zinc-300 text-sm font-semibold tracking-[0.2em] uppercase">Play</span>
+          <span className="text-zinc-300 text-sm font-semibold tracking-[0.2em] uppercase">Grow</span>
         </div>
 
         {/* Heading */}
         <h2 className="ds-title text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-5 leading-tight tracking-tight">
-          Dynamic{" "}
+          A Vibrant{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-violet-300">
-            Streaming
+            Community
           </span>{" "}
-          Experience
+          Hub
         </h2>
         <p className="ds-desc text-zinc-400 text-lg md:text-xl font-medium mb-14 text-center">
-          Empower Your Gameplay with Live Streaming
+          Where Gamers, Creators, and Communities Come Together
         </p>
 
         {/* Cards Grid */}
@@ -243,13 +243,13 @@ export default function DynamicStreamingSection() {
             {/* Text content — centered */}
             <div className="relative z-10 p-6 md:p-8 text-center flex flex-col items-center">
               <h3 className="text-xl md:text-2xl font-bold text-white leading-snug mb-2">
-                Revamp Your Entertainment with Diverse{" "}
+                Discover and Support Your Favorite{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-violet-300">
-                  Gaming Content
+                  Gaming Creators
                 </span>
               </h3>
               <p className="text-zinc-400 text-sm font-medium">
-                Stay Entertained with a Variety of Game Genres
+                Follow creators across every genre and be part of their journey
               </p>
             </div>
 
@@ -309,14 +309,14 @@ export default function DynamicStreamingSection() {
             {/* Text content — centered */}
             <div className="relative z-10 p-6 md:p-8 text-center flex flex-col items-center">
               <h3 className="text-xl md:text-2xl font-bold text-white leading-snug mb-2">
-                Connect with Your{" "}
+                Build Real{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-violet-300">
-                  Favorite Creators
+                  Connections
                 </span>{" "}
-                for a Seamless Streaming Experience
+                with a Thriving Gaming Community
               </h3>
               <p className="text-zinc-400 text-sm font-medium">
-                Watch live, interact in real-time, and be part of the action
+                Engage, collaborate, and grow alongside players and creators who share your passion
               </p>
             </div>
 
