@@ -14,8 +14,8 @@ const steps = [
   {
     num: "01",
     badge: "ANY FORMAT",
-    title: "WIN TOURNAMENTS",
-    desc: "Place high in Solo, Duo, Clash Squad or Classic matches across your favorite competitive games.",
+    title: "WIN MATCHES",
+    desc: "Compete and dominate in Solo, Duo, or Squad tournaments.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z" />
@@ -27,8 +27,8 @@ const steps = [
   {
     num: "02",
     badge: "INSTANT CREDIT",
-    title: "EARN ASTRA POINTS",
-    desc: "Every kill, placement, and tournament victory automatically accumulates points in your Astra wallet.",
+    title: "EARN POINTS",
+    desc: "Every kill and victory instantly deposits points into your wallet.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="9" />
@@ -40,8 +40,8 @@ const steps = [
   {
     num: "03",
     badge: "UNDER 60 SEC",
-    title: "CONVERT & WITHDRAW",
-    desc: "Convert your earned points directly to Indian rupees and withdraw straight to your bank account via UPI.",
+    title: "INSTANT CASHOUT",
+    desc: "Convert points to real cash and withdraw directly via UPI in seconds.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 21h18" />
@@ -241,9 +241,8 @@ export default function PlayWinWithdrawSection() {
               </h2>
 
               <p className="pww-lead">
-                Compete in daily tournaments, rack up points on the leaderboard,
-                and convert in-game victories directly into real cash transferred
-                straight to your bank account.
+                Turn your tournament victories into real cash. Withdraw instantly
+                to your bank account via UPI with zero fees.
               </p>
             </div>
 
@@ -381,8 +380,7 @@ export default function PlayWinWithdrawSection() {
             <div className="pww-payout-info">
               <h3 className="pww-payout-name">UPI Bank Transfer</h3>
               <p className="pww-payout-desc">
-                Withdraw your match winnings straight to any Indian bank account
-                with zero convenience charges or waiting period.
+                Instant cashout to any Indian bank account with zero processing fees.
               </p>
             </div>
 
@@ -426,8 +424,7 @@ export default function PlayWinWithdrawSection() {
             <div className="pww-payout-info">
               <h3 className="pww-payout-name">Google Play Voucher</h3>
               <p className="pww-payout-desc">
-                Redeem points for official Google Play redeem codes to unlock
-                in-game diamonds, season passes, and premium crates.
+                Redeem for official Play Store codes, diamonds, and season passes.
               </p>
             </div>
 

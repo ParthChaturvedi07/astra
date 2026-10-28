@@ -27,7 +27,6 @@ const footerLinks = {
   SUPPORT: [
     { label: "Help Center", href: "/helpcenter" },
     { label: "Contact Us", href: "/contact" },
-    { label: "Report a Problem", href: "/helpcenter" },
   ],
   LEGAL: [
     { label: "Terms & Conditions", href: "/terms" },

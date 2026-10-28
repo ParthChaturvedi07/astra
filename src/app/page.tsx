@@ -8,6 +8,7 @@ import DynamicStreamingSection from "@/components/DynamicStreamingSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import FaqSection from "@/components/FaqSection";
 
 export default function Home() {
   return (
@@ -20,7 +21,8 @@ export default function Home() {
       <HowToPlaySection />
       <DynamicStreamingSection />
       <TestimonialsSection />
-      {/* <ContactSection /> */}
+      <FaqSection/>
+      <ContactSection />
       <Footer />
     </main>
   );

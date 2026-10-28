@@ -10,12 +10,12 @@ const navLinks = [
   { id: "home", label: "Home", href: "/" },
   { id: "tournaments", label: "Tournaments", href: "/#tournaments", targetId: "tournaments" },
   { id: "how-to-play", label: "How to Play", href: "/#how-to-play", targetId: "how-to-play" },
-  { id: "streaming", label: "Streaming", href: "/#streaming", targetId: "streaming" },
   { id: "testimonials", label: "Testimonials", href: "/#testimonials", targetId: "testimonials" },
-  { id: "helpcenter", label: "Help Center", href: "/helpcenter", isRoute: true },
+  { id: "faq", label: "FAQ", href: "/#faq", targetId: "faq" },
+  { id: "contact", label: "Contact Us", href: "/#contact", targetId: "contact" },
 ];
 
-const onPageSectionIds = ["home", "tournaments", "how-to-play", "streaming", "testimonials"];
+const onPageSectionIds = ["home", "tournaments", "how-to-play", "testimonials", "faq", "contact"];
 
 /** Height of the fixed navbar; the section top lands just below it. */
 const NAV_OFFSET = 70;
@@ -144,11 +144,6 @@ export default function Navbar() {
     e: React.MouseEvent<HTMLAnchorElement>,
     link: (typeof navLinks)[0]
   ) => {
-    if (link.isRoute) {
-      // Normal route navigation (e.g. /helpcenter)
-      return;
-    }
-
     if (link.id === "home") {
       if (pathname === "/") {
         e.preventDefault();
