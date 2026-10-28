@@ -12,11 +12,11 @@ if (typeof window !== "undefined") {
 
 const footerLinks = {
   PLATFORM: [
-    { label: "Tournaments", href: "/tournaments" },
-    { label: "Games", href: "/games" },
+    { label: "Tournaments", href: "/#tournaments" },
+    { label: "Games", href: "/#tournaments" },
     { label: "Leaderboards", href: "/leaderboards" },
-    { label: "Rewards", href: "/rewards" },
-    { label: "How It Works", href: "/how-it-works" },
+    { label: "Rewards", href: "/play-win-withdraw" },
+    { label: "How It Works", href: "/#how-to-play" },
   ],
   COMMUNITY: [
     { label: "Discord", href: "https://discord.com" },
