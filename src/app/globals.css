@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
 
-/* ─────────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    Design Tokens
-───────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 :root {
   --bg: #eaeaf5;
   --bg-dark: #1a0a2e;
@@ -54,9 +54,9 @@ body {
   background-attachment: fixed;  /* keeps the gradient fixed behind the page, as before */
 }
 
-/* ─────────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    Navbar
-───────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .navbar {
   position: fixed;
   /* Stick it to the top so glassmorphism is visible when scrolling */
@@ -148,7 +148,7 @@ body {
   filter: drop-shadow(0 0 15px var(--purple-glow));
 }
 
-/* ── Hamburger button (hidden on desktop) ── */
+/* â”€â”€ Hamburger button (hidden on desktop) â”€â”€ */
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -201,7 +201,7 @@ body {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ── Mobile backdrop ── */
+/* â”€â”€ Mobile backdrop â”€â”€ */
 .nav-backdrop {
   position: fixed;
   inset: 0;
@@ -211,7 +211,7 @@ body {
   -webkit-backdrop-filter: blur(2px);
 }
 
-/* ── Mobile slide-in panel ── */
+/* â”€â”€ Mobile slide-in panel â”€â”€ */
 .nav-mobile-panel {
   position: fixed;
   top: 0;
@@ -230,7 +230,7 @@ body {
   overflow-y: auto;
 }
 
-/* ── Panel header: logo + close button ── */
+/* â”€â”€ Panel header: logo + close button â”€â”€ */
 .nav-mobile-panel-header {
   display: flex;
   align-items: center;
@@ -240,7 +240,7 @@ body {
   margin-bottom: 1rem;
 }
 
-/* ── Close (×) button inside the panel ── */
+/* â”€â”€ Close (Ã—) button inside the panel â”€â”€ */
 .nav-mobile-close {
   display: flex;
   flex-direction: column;
@@ -340,9 +340,9 @@ body {
 
 
 
-/* ─────────────────────────────────────────────
-   Responsive breakpoints — Navbar
-───────────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Responsive breakpoints â€” Navbar
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Tablet: shrink gaps */
 @media (max-width: 1024px) {
@@ -394,9 +394,9 @@ body {
 }
 
 
-/* ─────────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    Hero Section
-───────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .hero-section {
   position: relative;
   width: 100%;
@@ -406,7 +406,7 @@ body {
   margin-bottom: 4rem;
 }
 
-/* ── Giant background "ASTRA" text ── */
+/* â”€â”€ Giant background "ASTRA" text â”€â”€ */
 .hero-bg-text-wrapper {
   position: absolute;
   inset: 0;
@@ -440,7 +440,7 @@ body {
   transform: translateY(-8%);
 }
 
-/* ── Secondary background text lines ── */
+/* â”€â”€ Secondary background text lines â”€â”€ */
 .hero-bg-lines {
   position: absolute;
   inset: 0;
@@ -474,7 +474,7 @@ body {
   color: rgba(167, 139, 250, 0.04);
 }
 
-/* ── Character image ── */
+/* â”€â”€ Character image â”€â”€ */
 .hero-character {
   position: absolute;
   bottom: -4%;
@@ -493,7 +493,7 @@ body {
   /*
    * Mask the bottom of the character image so the feet/legs
   /*
-   * Mask only the very base of the character image —
+   * Mask only the very base of the character image â€”
    * lets the side fog layers do the heavy dissolving.
    * Bottom 18% fades to transparent; above that stays sharp.
    */
@@ -509,12 +509,12 @@ body {
       black 20%);
 }
 
-/* ─────────────────────────────────────────────
-   Atmospheric corner fog — bottom-left + bottom-right.
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Atmospheric corner fog â€” bottom-left + bottom-right.
    These sit ABOVE the characters (z:11) so they form a
    foreground mist that dissolves the side characters into
    the background, while also lighting the text areas.
-───────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .char-fog {
   position: absolute;
   pointer-events: none;
@@ -523,8 +523,8 @@ body {
 }
 
 /*
- * Left corner glow — anchored to bottom-left.
- * Covers the female character’s lower body and the
+ * Left corner glow â€” anchored to bottom-left.
+ * Covers the female characterâ€™s lower body and the
  * description text + CTA area on the left side.
  * Radial center is at the far left edge, bottom.
  */
@@ -542,8 +542,8 @@ body {
 }
 
 /*
- * Right corner glow — anchored to bottom-right.
- * Covers the skull character’s lower body and the
+ * Right corner glow â€” anchored to bottom-right.
+ * Covers the skull characterâ€™s lower body and the
  * PLAY / COMPETE / BELONG tagline on the right side.
  * Radial center is at the far right edge, bottom.
  */
@@ -560,7 +560,7 @@ body {
   filter: blur(18px);
 }
 
-/* ── Left content ── */
+/* â”€â”€ Left content â”€â”€ */
 .hero-left-content {
   position: absolute;
   bottom: 10%;
@@ -662,7 +662,7 @@ body {
   line-height: 1.3;
 }
 
-/* ── Right tagline ── */
+/* â”€â”€ Right tagline â”€â”€ */
 .hero-right-tagline {
   position: absolute;
   bottom: 8%;
@@ -691,11 +691,11 @@ body {
   text-shadow: 0 0 20px rgba(167, 139, 250, 0.6);
 }
 
-/* ═══════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    HERO RESPONSIVE BREAKPOINTS
-═══════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ─── Tablet (≤ 1024px) ─── */
+/* â”€â”€â”€ Tablet (â‰¤ 1024px) â”€â”€â”€ */
 @media (max-width: 1024px) {
   .hero-character {
     width: clamp(480px, 80vw, 800px);
@@ -732,26 +732,26 @@ body {
   }
 }
 
-/* ══════════════════════════════════════════════════════
-   hero-mobile-fog  — hidden on desktop, dark on mobile
-══════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   hero-mobile-fog  â€” hidden on desktop, dark on mobile
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .hero-mobile-fog {
   display: none;
   /* desktop: hidden */
 }
 
-/* ══════════════════════════════════════════════════════
-   MOBILE HERO  (≤ 768px)
-   Same lavender bg · dark purple bottom fog · white text
-══════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   MOBILE HERO  (â‰¤ 768px)
+   Same lavender bg Â· dark purple bottom fog Â· white text
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media (max-width: 768px) {
 
-  /* ── Keep the same lavender background ── */
+  /* â”€â”€ Keep the same lavender background â”€â”€ */
   .hero-section {
     min-height: 100svh;
   }
 
-  /* ── ASTRA bg text: same blue-purple gradient, sits at TOP ── */
+  /* â”€â”€ ASTRA bg text: same blue-purple gradient, sits at TOP â”€â”€ */
   .hero-bg-text-wrapper {
     align-items: flex-start;
     padding-top: 18%;
@@ -776,12 +776,12 @@ body {
     letter-spacing: -0.01em;
   }
 
-  /* ── Hide ghost secondary lines ── */
+  /* â”€â”€ Hide ghost secondary lines â”€â”€ */
   .hero-bg-lines {
     display: none;
   }
 
-  /* ── Character: anchored to top, full viewport width ── */
+  /* â”€â”€ Character: anchored to top, full viewport width â”€â”€ */
   .hero-character {
     width: 120vw;
     bottom: auto;
@@ -808,7 +808,7 @@ body {
         black 32%);
   }
 
-  /* ── Dark purple bottom fog (shown on mobile only) ── */
+  /* â”€â”€ Dark purple bottom fog (shown on mobile only) â”€â”€ */
   .hero-mobile-fog {
     display: block;
     position: absolute;
@@ -836,13 +836,13 @@ body {
     filter: blur(2px);
   }
 
-  /* ── Hide white corner fogs — replaced by dark fog ── */
+  /* â”€â”€ Hide white corner fogs â€” replaced by dark fog â”€â”€ */
   .char-fog-left,
   .char-fog-right {
     display: none;
   }
 
-  /* ── Left content: white text, full-width at bottom ── */
+  /* â”€â”€ Left content: white text, full-width at bottom â”€â”€ */
   .hero-left-content {
     bottom: 5%;
     left: 5%;
@@ -859,7 +859,7 @@ body {
     color: rgba(230, 220, 255, 0.92);
   }
 
-  /* ── CTA: filled purple pill (matching reference) ── */
+  /* â”€â”€ CTA: filled purple pill (matching reference) â”€â”€ */
   .hero-cta-btn {
     background: #7c3aed;
     border-color: #7c3aed;
@@ -906,15 +906,15 @@ body {
     border-color: rgba(139, 92, 246, 0.6);
   }
 
-  /* ── Right tagline: hidden on mobile ── */
+  /* â”€â”€ Right tagline: hidden on mobile â”€â”€ */
   .hero-right-tagline {
     display: none;
   }
 }
 
-/* ══════════════════════════════════════════════════════
-   SMALL MOBILE  (≤ 480px)
-══════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   SMALL MOBILE  (â‰¤ 480px)
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media (max-width: 480px) {
 
   .hero-bg-text-wrapper {
@@ -944,9 +944,9 @@ body {
     font-size: 0.79rem;
   }
 }
-/* ─────────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    How To Play Section
-───────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .htp-section {
   position: relative;
   width: 100%;
@@ -955,7 +955,7 @@ body {
   z-index: 20;
 }
 
-/* ── Background Character ── */
+/* â”€â”€ Background Character â”€â”€ */
 .htp-bg-char-wrapper {
   position: absolute;
   bottom: 10%;
@@ -987,7 +987,7 @@ body {
   filter: saturate(1.2);
 }
 
-/* ── Background "PLAY COMPETE BELONG" text ── */
+/* â”€â”€ Background "PLAY COMPETE BELONG" text â”€â”€ */
 .htp-bg-text-wrapper {
   position: absolute;
   top: 0;
@@ -1011,7 +1011,7 @@ body {
   line-height: 0.9;
 }
 
-/* ── Content Wrapper ── */
+/* â”€â”€ Content Wrapper â”€â”€ */
 .htp-content {
   position: relative;
   z-index: 5;
@@ -1019,7 +1019,7 @@ body {
   margin: 0 auto;
 }
 
-/* ── Header ── */
+/* â”€â”€ Header â”€â”€ */
 .htp-header {
   margin-bottom: 2.5rem;
   max-width: 540px;
@@ -1071,7 +1071,7 @@ body {
   font-weight: 400;
 }
 
-/* ── Cards Grid ── */
+/* â”€â”€ Cards Grid â”€â”€ */
 .htp-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr) 1.1fr;
@@ -1079,7 +1079,7 @@ body {
   margin-bottom: 1.25rem;
 }
 
-/* ── Step Card ── */
+/* â”€â”€ Step Card â”€â”€ */
 .htp-step-card {
   position: relative;
   border-radius: 1rem;
@@ -1168,7 +1168,7 @@ body {
   color: rgba(196, 181, 253, 0.65);
   font-weight: 400;
 }
-/* ── Mini UI: Game Links ── */
+/* â”€â”€ Mini UI: Game Links â”€â”€ */
 .htp-mini-ui {
   margin-top: auto;
   border-radius: 0.6rem;
@@ -1193,7 +1193,7 @@ body {
   border-bottom: 1px solid rgba(124, 58, 237, 0.1);
 }
 
-/* ── Mini UI: Game Link Visual ── */
+/* â”€â”€ Mini UI: Game Link Visual â”€â”€ */
 .htp-gamelink-visual {
   position: relative;
   width: 100%;
@@ -1217,7 +1217,7 @@ body {
   transform: scale(1.05);
 }
 
-/* ── Mini UI: Lobby Details ── */
+/* â”€â”€ Mini UI: Lobby Details â”€â”€ */
 .htp-mini-lobby {
   padding: 0.7rem;
 }
@@ -1304,7 +1304,7 @@ body {
   opacity: 1;
 }
 
-/* ── Mini UI: Compete Visual ── */
+/* â”€â”€ Mini UI: Compete Visual â”€â”€ */
 .htp-mini-compete {
   margin-top: auto;
   background: transparent;
@@ -1334,7 +1334,7 @@ body {
   filter: saturate(1.3);
 }
 
-/* ── Reward Redemption Card ── */
+/* â”€â”€ Reward Redemption Card â”€â”€ */
 /* .htp-reward-card {
   position: relative;
   border-radius: 1rem;
@@ -1488,7 +1488,7 @@ body {
   box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
 } */
 
-/* ── Stats Bar ── */
+/* â”€â”€ Stats Bar â”€â”€ */
 .htp-stats-bar {
   display: flex;
   align-items: center;
@@ -1593,11 +1593,11 @@ body {
 }
 
 
-/* ─────────────────────────────────────────────
-   How To Play — Responsive
-───────────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   How To Play â€” Responsive
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
-/* Large desktop (≤ 1280px) */
+/* Large desktop (â‰¤ 1280px) */
 @media (max-width: 1280px) {
   .htp-cards-grid {
     grid-template-columns: repeat(3, 1fr) 1.1fr;
@@ -1605,7 +1605,7 @@ body {
   }
 }
 
-/* Tablet (≤ 1024px) */
+/* Tablet (â‰¤ 1024px) */
 @media (max-width: 1024px) {
   .htp-section {
     padding: 4rem 3%;
@@ -1647,7 +1647,7 @@ body {
   }
 }
 
-/* Mobile (≤ 768px) */
+/* Mobile (â‰¤ 768px) */
 @media (max-width: 768px) {
   .htp-section {
     padding: 3.5rem 4%;
@@ -1701,7 +1701,7 @@ body {
   }
 }
 
-/* Small mobile (≤ 480px) */
+/* Small mobile (â‰¤ 480px) */
 @media (max-width: 480px) {
   .htp-section {
     padding: 2.5rem 3.5%;
@@ -1728,9 +1728,9 @@ body {
   }
 }
 
-/* ─────────────────────────────────────────────
-   Play · Win · Withdraw Section
-───────────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Play Â· Win Â· Withdraw Section
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .pww-section {
   position: relative;
   width: 100%;
@@ -1739,7 +1739,7 @@ body {
   z-index: 20;
 }
 
-/* ── Giant background "PLAY WIN WITHDRAW" text ── */
+/* â”€â”€ Giant background "PLAY WIN WITHDRAW" text â”€â”€ */
 .pww-bg-text-wrapper {
   position: absolute;
   top: 1%;
@@ -1763,7 +1763,7 @@ body {
   line-height: 0.88;
 }
 
-/* ── Ambient Radial Lighting ── */
+/* â”€â”€ Ambient Radial Lighting â”€â”€ */
 .pww-ambient-light {
   position: absolute;
   inset: 0;
@@ -1774,7 +1774,7 @@ body {
     radial-gradient(circle at 10% 75%, rgba(167, 139, 250, 0.08), transparent 50%);
 }
 
-/* ── Main Container ── */
+/* â”€â”€ Main Container â”€â”€ */
 .pww-container {
   position: relative;
   z-index: 5;
@@ -1785,7 +1785,7 @@ body {
   gap: 4rem;
 }
 
-/* ── 2-Column Stage ── */
+/* â”€â”€ 2-Column Stage â”€â”€ */
 .pww-stage {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -1793,7 +1793,7 @@ body {
   align-items: center;
 }
 
-/* ── Left Column ── */
+/* â”€â”€ Left Column â”€â”€ */
 .pww-left {
   display: flex;
   flex-direction: column;
@@ -1801,7 +1801,7 @@ body {
   max-width: 620px;
 }
 
-/* ── Header ── */
+/* â”€â”€ Header â”€â”€ */
 .pww-header {
   display: flex;
   flex-direction: column;
@@ -1857,7 +1857,7 @@ body {
   font-weight: 400;
 }
 
-/* ── Step Progression Cards ── */
+/* â”€â”€ Step Progression Cards â”€â”€ */
 .pww-steps-list {
   display: flex;
   flex-direction: column;
@@ -2002,7 +2002,7 @@ body {
   font-weight: 400;
 }
 
-/* ── CTA Group ── */
+/* â”€â”€ CTA Group â”€â”€ */
 .pww-cta-group {
   display: flex;
   flex-direction: column;
@@ -2118,9 +2118,9 @@ body {
   background: rgba(167, 139, 250, 0.35);
 }
 
-/* ═══════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Phone Showcase (Right Column)
-═══════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .pww-phone-stage {
   position: relative;
   display: flex;
@@ -2180,9 +2180,9 @@ body {
   filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 30px rgba(124, 58, 237, 0.25));
 }
 
-/* ═══════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Payout Methods Showcase
-═══════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .pww-payouts {
   position: relative;
   z-index: 5;
@@ -2376,11 +2376,11 @@ body {
   }
 }
 
-/* ─────────────────────────────────────────────
-   Play · Win · Withdraw — Responsive
-───────────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Play Â· Win Â· Withdraw â€” Responsive
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
-/* Tablet (≤ 1024px) */
+/* Tablet (â‰¤ 1024px) */
 @media (max-width: 1024px) {
   .pww-section {
     padding: 5rem 3% 4rem;
@@ -2404,7 +2404,7 @@ body {
   }
 }
 
-/* Mobile (≤ 768px) */
+/* Mobile (â‰¤ 768px) */
 @media (max-width: 768px) {
   .pww-section {
     padding: 4rem 4% 3rem;
@@ -2442,7 +2442,7 @@ body {
   }
 }
 
-/* Small mobile (≤ 480px) */
+/* Small mobile (â‰¤ 480px) */
 @media (max-width: 480px) {
   .pww-section {
     padding: 3rem 3.5% 2.5rem;
@@ -2508,9 +2508,9 @@ body {
   animation-play-state: paused;
 }
 
-/* ─────────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    Dotted Background Patches Animations
-───────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @keyframes dotFloat {
   0%, 100% {
     transform: translateY(0px) rotate(var(--patch-rot, 0deg));
@@ -2537,9 +2537,9 @@ body {
   animation: dotPulse 6s ease-in-out infinite;
 }
 
-/* ═══════════════════════════════════════════════════════
-   Contact Section — Matches Reward (PWW) design
-═══════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Contact Section â€” Matches Reward (PWW) design
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .ct-section {
   position: relative;
   width: 100%;
@@ -2548,7 +2548,7 @@ body {
   z-index: 20;
 }
 
-/* ── Giant background "GET IN TOUCH" text ── */
+/* â”€â”€ Giant background "GET IN TOUCH" text â”€â”€ */
 .ct-bg-text-wrapper {
   position: absolute;
   top: 1%;
@@ -2572,7 +2572,7 @@ body {
   line-height: 0.88;
 }
 
-/* ── Ambient Radial Lighting ── */
+/* â”€â”€ Ambient Radial Lighting â”€â”€ */
 .ct-ambient-light {
   position: absolute;
   inset: 0;
@@ -2583,7 +2583,7 @@ body {
     radial-gradient(circle at 10% 75%, rgba(167, 139, 250, 0.08), transparent 50%);
 }
 
-/* ── Main Container ── */
+/* â”€â”€ Main Container â”€â”€ */
 .ct-container {
   position: relative;
   z-index: 5;
@@ -2594,7 +2594,7 @@ body {
   gap: 4rem;
 }
 
-/* ── 2-Column Stage ── */
+/* â”€â”€ 2-Column Stage â”€â”€ */
 .ct-stage {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -2602,7 +2602,7 @@ body {
   align-items: start;
 }
 
-/* ── Left Column ── */
+/* â”€â”€ Left Column â”€â”€ */
 .ct-left {
   display: flex;
   flex-direction: column;
@@ -2610,7 +2610,7 @@ body {
   max-width: 620px;
 }
 
-/* ── Header ── */
+/* â”€â”€ Header â”€â”€ */
 .ct-header {
   display: flex;
   flex-direction: column;
@@ -2666,7 +2666,7 @@ body {
   font-weight: 400;
 }
 
-/* ── Contact Channel Cards (same pattern as step cards) ── */
+/* â”€â”€ Contact Channel Cards (same pattern as step cards) â”€â”€ */
 .ct-channels-list {
   display: flex;
   flex-direction: column;
@@ -2835,7 +2835,7 @@ body {
   color: rgba(196, 181, 253, 0.85);
 }
 
-/* ── CTA Group ── */
+/* â”€â”€ CTA Group â”€â”€ */
 .ct-cta-group {
   display: flex;
   flex-direction: column;
@@ -2951,9 +2951,9 @@ body {
   background: rgba(167, 139, 250, 0.35);
 }
 
-/* ═══════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Contact Form (Right Column)
-═══════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .ct-form-stage {
   position: relative;
   display: flex;
@@ -3021,7 +3021,7 @@ body {
   transform: translateY(-4px);
 }
 
-/* ── Top bar (window chrome) ── */
+/* â”€â”€ Top bar (window chrome) â”€â”€ */
 .ct-form-top-bar {
   display: flex;
   align-items: center;
@@ -3062,7 +3062,7 @@ body {
   pointer-events: none;
 }
 
-/* ── Form fields grid ── */
+/* â”€â”€ Form fields grid â”€â”€ */
 .ct-form-fields {
   position: relative;
   z-index: 2;
@@ -3194,11 +3194,11 @@ body {
   transform: translateX(3px);
 }
 
-/* ─────────────────────────────────────────────
-   Contact Section — Responsive
-───────────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Contact Section â€” Responsive
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
-/* Tablet (≤ 1024px) */
+/* Tablet (â‰¤ 1024px) */
 @media (max-width: 1024px) {
   .ct-section {
     padding: 5rem 3% 4rem;
@@ -3218,7 +3218,7 @@ body {
   }
 }
 
-/* Mobile (≤ 768px) */
+/* Mobile (â‰¤ 768px) */
 @media (max-width: 768px) {
   .ct-section {
     padding: 4rem 4% 3rem;
@@ -3251,7 +3251,7 @@ body {
   }
 }
 
-/* Small mobile (≤ 480px) */
+/* Small mobile (â‰¤ 480px) */
 @media (max-width: 480px) {
   .ct-section {
     padding: 3rem 3.5% 2.5rem;
@@ -3273,39 +3273,16 @@ body {
   }
 }
 
-/* ═══════════════════════════════════════════════════════
-   FAQ Section
-═══════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════
+   FAQ Section — Glassmorphic Card Design
+═══════════════════════════════════════════════ */
 .faq-section {
   position: relative;
   width: 100%;
-  padding: 5rem 4% 0;
+  padding: 5rem 4% 4rem;
   overflow: hidden;
   z-index: 20;
-}
-
-/* ── Giant background text ── */
-.faq-bg-text-wrapper {
-  position: absolute;
-  top: 2%;
-  right: 4%;
-  z-index: 0;
-  pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0;
-  line-height: 0.88;
-}
-
-.faq-bg-text-line {
-  font-size: clamp(3.2rem, 7vw, 5.5rem);
-  font-weight: 900;
-  color: rgba(167, 139, 250, 0.04);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  user-select: none;
-  line-height: 0.88;
 }
 
 /* ── Ambient Lighting ── */
@@ -3315,34 +3292,29 @@ body {
   pointer-events: none;
   z-index: 1;
   background:
-    radial-gradient(ellipse 60% 50% at 30% 35%, rgba(124, 58, 237, 0.12), transparent 70%),
-    radial-gradient(circle at 85% 70%, rgba(167, 139, 250, 0.08), transparent 50%);
+    radial-gradient(ellipse 60% 50% at 30% 35%, rgba(124, 58, 237, 0.10), transparent 70%),
+    radial-gradient(circle at 85% 70%, rgba(167, 139, 250, 0.06), transparent 50%);
 }
 
 /* ── Container ── */
 .faq-container {
   position: relative;
   z-index: 5;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
+  gap: 3rem;
 }
 
 /* ═══════════════════════════════════════════════
-   Top Stage: Heading + Visual
+   Header — Centered
 ═══════════════════════════════════════════════ */
-.faq-top-stage {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 3rem;
-  align-items: center;
-}
-
 .faq-header {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 0.85rem;
 }
 
@@ -3368,7 +3340,7 @@ body {
 }
 
 .faq-title {
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
   font-weight: 900;
   line-height: 0.96;
   letter-spacing: -0.03em;
@@ -3377,6 +3349,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
+  align-items: center;
 }
 
 .faq-grad-text {
@@ -3388,214 +3361,48 @@ body {
 }
 
 .faq-lead {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   line-height: 1.68;
-  color: rgba(196, 181, 253, 0.75);
-  max-width: 480px;
+  color: rgba(196, 181, 253, 0.7);
+  max-width: 520px;
   font-weight: 400;
 }
 
-/* ── Decorative Visual Card ── */
-.faq-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.faq-visual-card {
-  position: relative;
-  width: 280px;
-  height: 280px;
-  border-radius: 2rem;
-  background: linear-gradient(
-    160deg,
-    rgba(30, 15, 60, 0.7) 0%,
-    rgba(20, 10, 48, 0.85) 50%,
-    rgba(12, 5, 28, 0.9) 100%
-  );
-  border: 1px solid rgba(124, 58, 237, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow:
-    0 0 60px rgba(124, 58, 237, 0.12),
-    0 20px 50px rgba(0, 0, 0, 0.3);
-  overflow: visible;
-}
-
-.faq-visual-icon {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(91, 33, 182, 0.12));
-  border: 1px solid rgba(167, 139, 250, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--purple-glow);
-  box-shadow: 0 0 30px rgba(124, 58, 237, 0.3);
-  animation: faq-icon-pulse 4s ease-in-out infinite;
-}
-
-@keyframes faq-icon-pulse {
-  0%, 100% { box-shadow: 0 0 30px rgba(124, 58, 237, 0.3); transform: scale(1); }
-  50% { box-shadow: 0 0 50px rgba(124, 58, 237, 0.5); transform: scale(1.05); }
-}
-
-/* ── Floating Orbs ── */
-.faq-orb {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  font-size: 1.1rem;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.faq-orb-1 {
-  top: -12px;
-  right: 30px;
-  background: linear-gradient(135deg, #7c3aed, #a855f7);
-  color: white;
-  box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
-  animation: faq-float-1 5s ease-in-out infinite;
-}
-
-.faq-orb-2 {
-  bottom: 20px;
-  left: -15px;
-  background: linear-gradient(135deg, rgba(167, 139, 250, 0.3), rgba(124, 58, 237, 0.2));
-  border: 1px solid rgba(167, 139, 250, 0.4);
-  color: var(--purple-glow);
-  font-size: 0.9rem;
-  width: 34px;
-  height: 34px;
-  animation: faq-float-2 6s ease-in-out infinite;
-}
-
-.faq-orb-3 {
-  top: 50px;
-  left: -20px;
-  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
-  color: white;
-  font-size: 0.8rem;
-  width: 30px;
-  height: 30px;
-  box-shadow: 0 0 16px rgba(109, 40, 217, 0.5);
-  animation: faq-float-3 7s ease-in-out infinite;
-}
-
-@keyframes faq-float-1 {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(8deg); }
-}
-
-@keyframes faq-float-2 {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(-6deg); }
-}
-
-@keyframes faq-float-3 {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(5px, -10px) rotate(10deg); }
-  66% { transform: translate(-3px, -5px) rotate(-5deg); }
-}
-
-/* ── Stat Pills ── */
-.faq-stat-pill {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.75rem;
-  border-radius: 50px;
-  background: rgba(14, 6, 30, 0.85);
-  border: 1px solid rgba(124, 58, 237, 0.3);
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: rgba(196, 181, 253, 0.8);
-  backdrop-filter: blur(8px);
-  z-index: 3;
-}
-
-.faq-stat-pill-1 {
-  bottom: -8px;
-  right: 20px;
-  animation: faq-float-2 5.5s ease-in-out infinite;
-}
-
-.faq-stat-pill-2 {
-  top: 30px;
-  right: -30px;
-  animation: faq-float-1 6.5s ease-in-out infinite;
-}
-
-.faq-stat-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #c084fc;
-  box-shadow: 0 0 6px #c084fc;
-}
-
-.faq-stat-dot--green {
-  background: #34d399;
-  box-shadow: 0 0 6px #34d399;
-}
-
 /* ═══════════════════════════════════════════════
-   Accordion List
+   Accordion List — Glassmorphic card items
 ═══════════════════════════════════════════════ */
 .faq-list {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 0.65rem;
 }
 
 .faq-item {
   position: relative;
-  border-bottom: 1px solid rgba(124, 58, 237, 0.12);
+  border-radius: 1rem;
+  border: 1px solid rgba(124, 58, 237, 0.15);
+  background: rgba(13, 8, 24, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.faq-item:first-child {
-  border-top: 1px solid rgba(124, 58, 237, 0.12);
+.faq-item:hover {
+  border-color: rgba(124, 58, 237, 0.3);
+  background: rgba(13, 8, 24, 0.75);
 }
 
-/* Animated left-edge glow line */
-.faq-item-glow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, #7c3aed, #c084fc, #7c3aed);
-  border-radius: 2px;
-  opacity: 0;
-  transform: scaleY(0);
-  transform-origin: center;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+.faq-item--open {
+  border-color: rgba(124, 58, 237, 0.35);
+  background: rgba(21, 10, 46, 0.85);
+  box-shadow:
+    0 0 30px rgba(124, 58, 237, 0.1),
+    0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-.faq-item--open .faq-item-glow {
-  opacity: 1;
-  transform: scaleY(1);
-  box-shadow: 0 0 12px rgba(124, 58, 237, 0.5);
-}
-
-.faq-item:hover .faq-item-glow {
-  opacity: 0.5;
-  transform: scaleY(0.6);
-}
-
-.faq-item--open:hover .faq-item-glow {
-  opacity: 1;
-  transform: scaleY(1);
+.faq-item--open:hover {
+  border-color: rgba(167, 139, 250, 0.45);
 }
 
 /* ── Trigger button ── */
@@ -3603,8 +3410,8 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  padding: 1.5rem 1rem 1.5rem 1.5rem;
+  gap: 1rem;
+  padding: 1.2rem 1.25rem;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -3612,33 +3419,29 @@ body {
   transition: all 0.3s ease;
 }
 
-.faq-trigger:hover {
-  padding-left: 1.75rem;
-}
-
 .faq-num {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 800;
-  color: rgba(167, 139, 250, 0.45);
+  color: rgba(167, 139, 250, 0.35);
   letter-spacing: 0.08em;
   font-family: monospace;
   flex-shrink: 0;
-  min-width: 24px;
+  min-width: 22px;
   transition: color 0.3s ease;
 }
 
 .faq-item--open .faq-num,
 .faq-item:hover .faq-num {
-  color: rgba(167, 139, 250, 0.8);
+  color: rgba(167, 139, 250, 0.7);
 }
 
 .faq-question {
   flex: 1;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
   letter-spacing: -0.01em;
-  line-height: 1.4;
+  line-height: 1.45;
   transition: color 0.3s ease;
 }
 
@@ -3647,16 +3450,16 @@ body {
 }
 
 .faq-item:hover .faq-question {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /* ── Plus / Minus Icon ── */
 .faq-icon-wrap {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: rgba(124, 58, 237, 0.1);
-  border: 1px solid rgba(124, 58, 237, 0.25);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(124, 58, 237, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3665,21 +3468,20 @@ body {
 }
 
 .faq-icon-wrap--open {
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.35), rgba(91, 33, 182, 0.2));
-  border-color: rgba(167, 139, 250, 0.5);
-  box-shadow: 0 0 18px rgba(124, 58, 237, 0.35);
-  transform: rotate(0deg);
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(91, 33, 182, 0.15));
+  border-color: rgba(167, 139, 250, 0.45);
+  box-shadow: 0 0 14px rgba(124, 58, 237, 0.3);
 }
 
 .faq-item:hover .faq-icon-wrap:not(.faq-icon-wrap--open) {
-  background: rgba(124, 58, 237, 0.16);
-  border-color: rgba(167, 139, 250, 0.4);
+  background: rgba(124, 58, 237, 0.14);
+  border-color: rgba(167, 139, 250, 0.35);
 }
 
 .faq-icon {
   position: relative;
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
 }
 
 .faq-icon-h,
@@ -3717,39 +3519,34 @@ body {
 }
 
 .faq-answer {
-  padding: 0 1rem 1.5rem 4.25rem;
-  font-size: 0.88rem;
-  line-height: 1.72;
-  color: rgba(196, 181, 253, 0.7);
+  padding: 0 1.25rem 1.35rem 3.5rem;
+  font-size: 0.85rem;
+  line-height: 1.75;
+  color: rgba(196, 181, 253, 0.65);
   font-weight: 400;
-  max-width: 680px;
+  max-width: 640px;
 }
 
 /* ═══════════════════════════════════════════════
-   Bottom CTA Card
+   Bottom CTA Card — Glassmorphic
 ═══════════════════════════════════════════════ */
 .faq-cta-card {
   position: relative;
-  border-radius: 1.5rem;
-  padding: 2.5rem 2.5rem;
+  border-radius: 1.25rem;
+  padding: 2.25rem 2.25rem;
   overflow: hidden;
-  background: linear-gradient(
-    160deg,
-    rgba(30, 15, 60, 0.75) 0%,
-    rgba(20, 10, 48, 0.85) 50%,
-    rgba(12, 5, 28, 0.9) 100%
-  );
+  background: rgba(13, 8, 24, 0.7);
   border: 1px solid rgba(124, 58, 237, 0.2);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .faq-cta-card:hover {
-  border-color: rgba(167, 139, 250, 0.45);
-  box-shadow: 0 0 40px rgba(124, 58, 237, 0.18), 0 12px 30px rgba(0, 0, 0, 0.4);
-  transform: translateY(-3px);
+  border-color: rgba(167, 139, 250, 0.4);
+  box-shadow: 0 0 35px rgba(124, 58, 237, 0.15), 0 10px 28px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
 }
 
 .faq-cta-glow {
@@ -3757,9 +3554,9 @@ body {
   top: -50%;
   left: 50%;
   transform: translateX(-50%);
-  width: 500px;
-  height: 300px;
-  background: radial-gradient(ellipse, rgba(124, 58, 237, 0.18), transparent 70%);
+  width: 450px;
+  height: 250px;
+  background: radial-gradient(ellipse, rgba(124, 58, 237, 0.14), transparent 70%);
   pointer-events: none;
 }
 
@@ -3776,56 +3573,56 @@ body {
 .faq-cta-left {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .faq-cta-title {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: #ffffff;
   letter-spacing: -0.01em;
 }
 
 .faq-cta-desc {
-  font-size: 0.85rem;
-  color: rgba(196, 181, 253, 0.65);
+  font-size: 0.82rem;
+  color: rgba(196, 181, 253, 0.6);
   font-weight: 400;
 }
 
 .faq-cta-right {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.85rem;
   flex-wrap: wrap;
 }
 
 .faq-cta-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
   background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
   color: #ffffff;
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 0.8rem 1.5rem;
+  padding: 0.72rem 1.35rem;
   border-radius: 50px;
-  border: 1px solid rgba(192, 132, 252, 0.4);
-  box-shadow: 0 0 20px rgba(124, 58, 237, 0.45);
+  border: 1px solid rgba(192, 132, 252, 0.35);
+  box-shadow: 0 0 18px rgba(124, 58, 237, 0.4);
   transition: all 0.25s ease;
 }
 
 .faq-cta-btn:hover {
   background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
   transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(124, 58, 237, 0.7);
+  box-shadow: 0 0 28px rgba(124, 58, 237, 0.65);
 }
 
 .faq-cta-btn-arrow {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.15);
   display: flex;
@@ -3841,22 +3638,22 @@ body {
 .faq-cta-discord {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.74rem;
+  gap: 0.45rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  color: rgba(196, 181, 253, 0.7);
+  color: rgba(196, 181, 253, 0.65);
   text-decoration: none;
-  padding: 0.7rem 1.2rem;
+  padding: 0.65rem 1.1rem;
   border-radius: 50px;
-  border: 1px solid rgba(167, 139, 250, 0.2);
-  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(167, 139, 250, 0.18);
+  background: rgba(124, 58, 237, 0.06);
   transition: all 0.25s ease;
 }
 
 .faq-cta-discord:hover {
-  border-color: rgba(167, 139, 250, 0.5);
+  border-color: rgba(167, 139, 250, 0.45);
   color: #ffffff;
-  background: rgba(124, 58, 237, 0.18);
+  background: rgba(124, 58, 237, 0.15);
 }
 
 /* ─────────────────────────────────────────────
@@ -3868,16 +3665,6 @@ body {
   .faq-section {
     padding: 5rem 3% 4rem;
   }
-
-  .faq-top-stage {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .faq-visual-card {
-    width: 240px;
-    height: 240px;
-  }
 }
 
 /* Mobile (≤ 768px) */
@@ -3887,47 +3674,35 @@ body {
   }
 
   .faq-container {
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
   .faq-title {
-    font-size: clamp(2.2rem, 9vw, 3.2rem);
-  }
-
-  .faq-bg-text-wrapper {
-    display: none;
-  }
-
-  .faq-visual {
-    display: none;
+    font-size: clamp(2.2rem, 9vw, 3rem);
   }
 
   .faq-trigger {
-    gap: 0.85rem;
-    padding: 1.25rem 0.75rem 1.25rem 1rem;
-  }
-
-  .faq-trigger:hover {
-    padding-left: 1.25rem;
+    gap: 0.75rem;
+    padding: 1.1rem 1rem;
   }
 
   .faq-question {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
   }
 
   .faq-answer {
-    padding: 0 0.75rem 1.25rem 3rem;
-    font-size: 0.84rem;
+    padding: 0 1rem 1.15rem 2.85rem;
+    font-size: 0.82rem;
   }
 
   .faq-cta-card {
-    padding: 2rem 1.5rem;
+    padding: 1.75rem 1.35rem;
   }
 
   .faq-cta-content {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   .faq-cta-right {
@@ -3941,10 +3716,19 @@ body {
     padding: 3rem 3.5% 2.5rem;
   }
 
+  .faq-item {
+    border-radius: 0.75rem;
+  }
+
   .faq-icon-wrap {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+  }
+
+  .faq-icon {
+    width: 10px;
+    height: 10px;
   }
 
   .faq-num {

@@ -63,7 +63,6 @@ function FaqItem({
     if (!content || !inner) return;
 
     if (isOpen) {
-      // measure actual height
       const h = inner.scrollHeight;
       gsap.to(content, {
         height: h,
@@ -83,9 +82,6 @@ function FaqItem({
 
   return (
     <div className={`faq-item ${isOpen ? "faq-item--open" : ""}`}>
-      {/* Animated border glow line */}
-      <div className="faq-item-glow" />
-
       <button
         className="faq-trigger"
         onClick={onToggle}
@@ -175,20 +171,6 @@ export default function FaqSection() {
         }
       );
 
-      // Illustration / right decorative element
-      gsap.fromTo(
-        ".faq-visual",
-        { opacity: 0, scale: 0.9, y: 40 },
-        {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: { trigger: ".faq-visual", start: "top 85%" },
-        }
-      );
-
       // FAQ items staggered entrance
       gsap.fromTo(
         ".faq-item",
@@ -224,12 +206,6 @@ export default function FaqSection() {
 
   return (
     <section ref={sectionRef} className="faq-section" id="faq">
-      {/* Giant background text */}
-      <div className="faq-bg-text-wrapper" aria-hidden="true">
-        <span className="faq-bg-text-line">FREQUENTLY</span>
-        <span className="faq-bg-text-line">ASKED</span>
-      </div>
-
       {/* Ambient lighting */}
       <div className="faq-ambient-light" aria-hidden="true" />
 
@@ -266,63 +242,22 @@ export default function FaqSection() {
       />
 
       <div className="faq-container">
-        {/* ═══════════ TOP ROW: Heading + Visual ═══════════ */}
-        <div className="faq-top-stage">
-          {/* Left — heading block */}
-          <div className="faq-header">
-            <div className="faq-header-tag">
-              <span className="faq-tag-text">FAQ</span>
-              <div className="faq-tag-line" />
-            </div>
-
-            <h2 className="faq-title">
-              <span>GOT</span>
-              <span className="faq-grad-text">QUESTIONS?</span>
-            </h2>
-
-            <p className="faq-lead">
-              Everything you need to know about competing, earning, and
-              withdrawing on Astra — answered.
-            </p>
+        {/* ═══════════ HEADER — Centered ═══════════ */}
+        <div className="faq-header">
+          <div className="faq-header-tag">
+            <span className="faq-tag-text">FAQ</span>
+            <div className="faq-tag-line" />
           </div>
 
-          {/* Right — decorative visual */}
-          <div className="faq-visual">
-            <div className="faq-visual-card">
-              {/* Floating question mark orbs */}
-              <div className="faq-orb faq-orb-1">?</div>
-              <div className="faq-orb faq-orb-2">?</div>
-              <div className="faq-orb faq-orb-3">?</div>
+          <h2 className="faq-title">
+            <span>GOT</span>
+            <span className="faq-grad-text">QUESTIONS?</span>
+          </h2>
 
-              {/* Central icon */}
-              <div className="faq-visual-icon">
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                  <path d="M12 17h.01" />
-                </svg>
-              </div>
-
-              {/* Stat pills */}
-              <div className="faq-stat-pill faq-stat-pill-1">
-                <span className="faq-stat-dot" />
-                <span>6 Topics</span>
-              </div>
-              <div className="faq-stat-pill faq-stat-pill-2">
-                <span className="faq-stat-dot faq-stat-dot--green" />
-                <span>24/7 Support</span>
-              </div>
-            </div>
-          </div>
+          <p className="faq-lead">
+            Everything you need to know about competing, earning, and
+            withdrawing on Astra — answered.
+          </p>
         </div>
 
         {/* ═══════════ ACCORDION LIST ═══════════ */}
