@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -88,9 +88,23 @@ function RollLink({
   label: string;
 }) {
   const external = href.startsWith("http");
+  // Links like "/#tournaments" – scroll silently, no URL change
+  const isHash = href.startsWith("/#");
+  const sectionId = isHash ? href.slice(2) : null; // strips leading "/#"
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!sectionId) return;
+    e.preventDefault();
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <Link
       href={href}
+      onClick={isHash ? handleClick : undefined}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="group inline-flex w-fit items-baseline gap-1.5 text-sm font-medium leading-[1.5]"
     >
