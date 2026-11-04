@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import AwwwardsCursor from "@/components/AwwwardsCursor";
+import AwwwardsInteractiveCards from "@/components/AwwwardsInteractiveCards";
 
 export const metadata: Metadata = {
   title: "ASTRA – Next-Gen Gaming Tournament Platform",
@@ -16,10 +18,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className="h-full">
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <AwwwardsCursor />
+        <AwwwardsInteractiveCards />
         {children}
       </body>
     </html>

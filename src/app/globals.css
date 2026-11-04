@@ -3750,3 +3750,117 @@ body {
     width: 100%;
   }
 }
+
+
+/* ═══════════════════════════════════════════════
+   Awwwards Worthy Global Animations & Effects
+═══════════════════════════════════════════════ */
+
+/* ── Selection Color ── */
+::selection {
+  background: rgba(124, 58, 237, 0.55);
+  color: #ffffff;
+}
+
+/* ── Interactive Card Spotlight Hover Glow ── */
+.tf-card,
+.pww-step-card,
+.pww-payout-card,
+.htp-step-card,
+.ds-card,
+.test-stat-card,
+.ct-channel-card,
+.faq-card {
+  position: relative;
+  will-change: transform, border-color, box-shadow;
+}
+
+.tf-card::before,
+.pww-step-card::before,
+.pww-payout-card::before,
+.htp-step-card::before,
+.ds-card::before,
+.test-stat-card::before,
+.faq-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    450px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+    rgba(192, 132, 252, 0.12),
+    transparent 75%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tf-card:hover::before,
+.pww-step-card:hover::before,
+.pww-payout-card:hover::before,
+.htp-step-card:hover::before,
+.ds-card:hover::before,
+.test-stat-card:hover::before,
+.faq-card:hover::before {
+  opacity: 1;
+}
+
+/* ── Button Shimmer Sweep ── */
+.hero-cta-btn,
+.pww-btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta-btn::after,
+.pww-btn-primary::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -70%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  animation: awwwards-shimmer-sweep 5s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes awwwards-shimmer-sweep {
+  0%, 75% {
+    left: -70%;
+  }
+  100% {
+    left: 140%;
+  }
+}
+
+/* ── Subtle Ambient Float for Key Badges ── */
+@keyframes awwwards-subtle-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.awwwards-float {
+  animation: awwwards-subtle-float 4s ease-in-out infinite;
+}
+
+/* ── Smooth Horizontal Scrollbar Hide ── */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

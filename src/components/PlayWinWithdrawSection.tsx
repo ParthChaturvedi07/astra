@@ -10,47 +10,6 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const steps = [
-  {
-    num: "01",
-    badge: "ANY FORMAT",
-    title: "WIN MATCHES",
-    desc: "Compete and dominate in Solo, Duo, or Squad tournaments.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z" />
-        <path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3" />
-      </svg>
-    ),
-    variant: "purple",
-  },
-  {
-    num: "02",
-    badge: "INSTANT CREDIT",
-    title: "EARN POINTS",
-    desc: "Every kill and victory instantly deposits points into your wallet.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="9" />
-        <path d="M12 7v10M9 9.5a2.8 2.8 0 0 1 2.8-2.5h.4a2.8 2.8 0 0 1 0 5.6h-.4a2.8 2.8 0 0 0 0 5.6h.4a2.8 2.8 0 0 0 2.8-2.5" />
-      </svg>
-    ),
-    variant: "purple-glow",
-  },
-  {
-    num: "03",
-    badge: "UNDER 60 SEC",
-    title: "INSTANT CASHOUT",
-    desc: "Convert points to real cash and withdraw directly via UPI in seconds.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 21h18" />
-      </svg>
-    ),
-    variant: "purple-bright",
-  },
-];
-
 export default function PlayWinWithdrawSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
@@ -226,7 +185,7 @@ export default function PlayWinWithdrawSection() {
       <div className="pww-container">
         {/* ═══════════ MAIN 2-COLUMN STAGE ═══════════ */}
         <div className="pww-stage">
-          {/* ── Left Column: Header, Progression, CTA ── */}
+          {/* ── Left Column: Header, Payout Cards, CTA ── */}
           <div className="pww-left">
             {/* Header */}
             <div className="pww-header">
@@ -246,34 +205,95 @@ export default function PlayWinWithdrawSection() {
               </p>
             </div>
 
-            {/* Step Progression Cards */}
-            <div className="pww-steps-list">
-              {steps.map((step, idx) => (
-                <div
-                  key={step.num}
-                  className={`pww-step-card pww-step-${step.variant}`}
-                >
-                  {/* Step rail / indicator */}
-                  <div className="pww-step-rail">
-                    <div className="pww-step-icon-box">
-                      {step.icon}
-                    </div>
-                    {idx < steps.length - 1 && (
-                      <div className="pww-step-connector" />
-                    )}
+            {/* ── Payout Method Cards (above CTAs) ── */}
+            <div className="pww-payouts">
+              {/* Card 1: UPI Bank Transfer */}
+              <div className="pww-payout-card pww-payout-upi">
+                <div className="pww-payout-glow" />
+
+                <div className="pww-payout-top">
+                  <div className="pww-payout-logo-box pww-payout-logo-upi">
+                    <Image
+                      src="/images/howtoplay/upi.png"
+                      alt="UPI Bank Transfer"
+                      width={68}
+                      height={32}
+                      style={{ objectFit: "contain" }}
+                    />
                   </div>
 
-                  {/* Step content */}
-                  <div className="pww-step-body">
-                    <div className="pww-step-meta">
-                      <span className="pww-step-num">{step.num}</span>
-                      <span className="pww-step-badge">{step.badge}</span>
-                    </div>
-                    <h3 className="pww-step-title">{step.title}</h3>
-                    <p className="pww-step-desc">{step.desc}</p>
+                  <div className="pww-payout-badges">
+                    <span className="pww-badge-purple">DIRECT CASHOUT</span>
+                    <span className="pww-badge-micro">Under 60s</span>
                   </div>
                 </div>
-              ))}
+
+                <div className="pww-payout-info">
+                  <h3 className="pww-payout-name">UPI Bank Transfer</h3>
+                  <p className="pww-payout-desc">
+                    Instant cashout to any Indian bank account with zero processing fees.
+                  </p>
+                </div>
+
+                <div className="pww-payout-footer">
+                  <div className="pww-payout-features">
+                    <span className="pww-payout-pill">GPay</span>
+                    <span className="pww-payout-pill">PhonePe</span>
+                    <span className="pww-payout-pill">Paytm</span>
+                    <span className="pww-payout-pill">All Banks</span>
+                  </div>
+
+                  <div className="pww-payout-action">
+                    <span>Instant Transfer</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M7 17L17 7M7 7h10v10" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 2: Google Play Voucher */}
+              <div className="pww-payout-card pww-payout-play">
+                <div className="pww-payout-glow" />
+
+                <div className="pww-payout-top">
+                  <div className="pww-payout-logo-box pww-payout-logo-play">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                      <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.61 3 21.09 3 20.5Z" fill="#4285F4" />
+                      <path d="M16.81 15.12L6.05 21.34L13.69 12L16.81 15.12Z" fill="#EA4335" />
+                      <path d="M20.16 10.81C20.5 11.08 20.5 11.64 20.5 12C20.5 12.36 20.38 12.65 20.16 12.87L17.65 14.32L14.28 12L17.65 9.68L20.16 10.81Z" fill="#FBBC04" />
+                      <path d="M6.05 2.66L16.81 8.88L13.69 12L6.05 2.66Z" fill="#34A853" />
+                    </svg>
+                  </div>
+
+                  <div className="pww-payout-badges">
+                    <span className="pww-badge-purple">DIGITAL REWARD</span>
+                    <span className="pww-badge-micro">Direct Code</span>
+                  </div>
+                </div>
+
+                <div className="pww-payout-info">
+                  <h3 className="pww-payout-name">Google Play Voucher</h3>
+                  <p className="pww-payout-desc">
+                    Redeem for official Play Store codes, diamonds, and season passes.
+                  </p>
+                </div>
+
+                <div className="pww-payout-footer">
+                  <div className="pww-payout-features">
+                    <span className="pww-payout-pill">Diamonds</span>
+                    <span className="pww-payout-pill">Royal Pass</span>
+                    <span className="pww-payout-pill">No Expiry</span>
+                  </div>
+
+                  <div className="pww-payout-action">
+                    <span>Redeem Code</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M7 17L17 7M7 7h10v10" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* CTA Group */}
@@ -350,97 +370,6 @@ export default function PlayWinWithdrawSection() {
                 className="pww-phone-img"
                 priority
               />
-            </div>
-          </div>
-        </div>
-
-        {/* ═══════════ PAYOUT METHODS SHOWCASE ═══════════ */}
-        <div className="pww-payouts">
-          {/* Card 1: UPI Bank Transfer */}
-          <div className="pww-payout-card pww-payout-upi">
-            <div className="pww-payout-glow" />
-
-            <div className="pww-payout-top">
-              <div className="pww-payout-logo-box pww-payout-logo-upi">
-                <Image
-                  src="/images/howtoplay/upi.png"
-                  alt="UPI Bank Transfer"
-                  width={68}
-                  height={32}
-                  style={{ objectFit: "contain" }}
-                />
-              </div>
-
-              <div className="pww-payout-badges">
-                <span className="pww-badge-purple">DIRECT CASHOUT</span>
-                <span className="pww-badge-micro">⚡ Under 60s</span>
-              </div>
-            </div>
-
-            <div className="pww-payout-info">
-              <h3 className="pww-payout-name">UPI Bank Transfer</h3>
-              <p className="pww-payout-desc">
-                Instant cashout to any Indian bank account with zero processing fees.
-              </p>
-            </div>
-
-            <div className="pww-payout-footer">
-              <div className="pww-payout-features">
-                <span className="pww-payout-pill">GPay</span>
-                <span className="pww-payout-pill">PhonePe</span>
-                <span className="pww-payout-pill">Paytm</span>
-                <span className="pww-payout-pill">All Banks</span>
-              </div>
-
-              <div className="pww-payout-action">
-                <span>Instant Transfer</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M7 17L17 7M7 7h10v10" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2: Google Play Voucher */}
-          <div className="pww-payout-card pww-payout-play">
-            <div className="pww-payout-glow" />
-
-            <div className="pww-payout-top">
-              <div className="pww-payout-logo-box pww-payout-logo-play">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                  <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.61 3 21.09 3 20.5Z" fill="#4285F4" />
-                  <path d="M16.81 15.12L6.05 21.34L13.69 12L16.81 15.12Z" fill="#EA4335" />
-                  <path d="M20.16 10.81C20.5 11.08 20.5 11.64 20.5 12C20.5 12.36 20.38 12.65 20.16 12.87L17.65 14.32L14.28 12L17.65 9.68L20.16 10.81Z" fill="#FBBC04" />
-                  <path d="M6.05 2.66L16.81 8.88L13.69 12L6.05 2.66Z" fill="#34A853" />
-                </svg>
-              </div>
-
-              <div className="pww-payout-badges">
-                <span className="pww-badge-purple">DIGITAL REWARD</span>
-                <span className="pww-badge-micro">🎮 Direct Code</span>
-              </div>
-            </div>
-
-            <div className="pww-payout-info">
-              <h3 className="pww-payout-name">Google Play Voucher</h3>
-              <p className="pww-payout-desc">
-                Redeem for official Play Store codes, diamonds, and season passes.
-              </p>
-            </div>
-
-            <div className="pww-payout-footer">
-              <div className="pww-payout-features">
-                <span className="pww-payout-pill">Diamonds</span>
-                <span className="pww-payout-pill">Royal Pass</span>
-                <span className="pww-payout-pill">No Expiry</span>
-              </div>
-
-              <div className="pww-payout-action">
-                <span>Redeem Code</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M7 17L17 7M7 7h10v10" />
-                </svg>
-              </div>
             </div>
           </div>
         </div>

@@ -102,6 +102,16 @@ export default function HeroSection() {
           delay: 0.9,
         }
       );
+
+      // Character continuous floating breath animation
+      gsap.to(".hero-character-img", {
+        y: -12,
+        duration: 3.8,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 1.6,
+      });
     }, heroRef);
 
     return () => ctx.revert();

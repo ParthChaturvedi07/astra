@@ -145,7 +145,7 @@ export default function SupportedGamesSection({
         <button className="sg-btn flex items-center justify-center rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md transition-all duration-300 hover:border-purple-400/50 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:-translate-y-1 group" style={{ padding: '10px 24px', gap: '12px' }}>
           <div className="shrink-0 relative" style={{ width: '28px', height: '28px', flexShrink: 0 }}>
             <Image
-              src="/images/playstore.png"
+              src="https://framerusercontent.com/images/1GgSZDsVA7GKub98IQFhnqoNJvI.svg"
               alt="Play Store"
               fill
               className="object-contain"

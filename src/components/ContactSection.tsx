@@ -26,35 +26,6 @@ const contactChannels = [
     ),
     variant: "purple",
   },
-  {
-    num: "02",
-    badge: "LIVE CHAT",
-    title: "JOIN DISCORD",
-    desc: "Connect with fellow gamers, get instant help from community moderators, and stay updated on tournaments.",
-    value: "discord.gg/astra",
-    href: "https://discord.com",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-      </svg>
-    ),
-    variant: "purple-glow",
-  },
-  {
-    num: "03",
-    badge: "IST TIMEZONE",
-    title: "SUPPORT HOURS",
-    desc: "Our dedicated team is available during business hours to handle account issues, disputes, and technical problems.",
-    value: "Mon – Sat, 10am – 7pm IST",
-    href: null,
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
-      </svg>
-    ),
-    variant: "purple-bright",
-  },
 ];
 
 export default function ContactSection() {
@@ -222,7 +193,6 @@ export default function ContactSection() {
                   {/* Content */}
                   <div className="ct-channel-body">
                     <div className="ct-channel-meta">
-                      <span className="ct-channel-num">{ch.num}</span>
                       <span className="ct-channel-badge">{ch.badge}</span>
                     </div>
                     <h3 className="ct-channel-title">{ch.title}</h3>
@@ -290,7 +260,7 @@ export default function ContactSection() {
                   <span className="ct-dot ct-dot-yellow" />
                   <span className="ct-dot ct-dot-green" />
                 </div>
-                <span className="ct-form-tab">contact_form.tsx</span>
+                <span className="ct-form-tab">contact_form.js</span>
               </div>
 
               {/* Inner gradient */}
