@@ -50,6 +50,17 @@ export default function HeroSection() {
           scrub: true,
         },
       });
+      // Check if this is the first visit (loader is currently running)
+      const isFirstVisit = typeof window !== "undefined" && !sessionStorage.getItem("astra_loaded");
+      if (isFirstVisit) {
+        // Keep elements hidden/ready; PageTransition.fireHeroEntrance() will animate them when the loader exits
+        gsap.set(".hero-bg-text", { opacity: 0, scale: 1.4 });
+        gsap.set(".hero-character", { y: 200, opacity: 0 });
+        gsap.set(".hero-left-content", { opacity: 0, x: -40 });
+        gsap.set(".hero-tagline-word", { opacity: 0, x: 40 });
+        return;
+      }
+
       // Background ASTRA text: starts scaled-up, animates to normal
       gsap.fromTo(
         ".hero-bg-text",

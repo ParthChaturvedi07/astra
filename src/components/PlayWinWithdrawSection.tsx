@@ -206,9 +206,9 @@ export default function PlayWinWithdrawSection() {
             </div>
 
             {/* ── Payout Method Cards (above CTAs) ── */}
-            <div className="pww-payouts">
+            {/* <div className="pww-payouts"> */}
               {/* Card 1: UPI Bank Transfer */}
-              <div className="pww-payout-card pww-payout-upi">
+              {/* <div className="pww-payout-card pww-payout-upi">
                 <div className="pww-payout-glow" />
 
                 <div className="pww-payout-top">
@@ -250,10 +250,10 @@ export default function PlayWinWithdrawSection() {
                     </svg>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* Card 2: Google Play Voucher */}
-              <div className="pww-payout-card pww-payout-play">
+              {/* <div className="pww-payout-card pww-payout-play">
                 <div className="pww-payout-glow" />
 
                 <div className="pww-payout-top">
@@ -293,8 +293,8 @@ export default function PlayWinWithdrawSection() {
                     </svg>
                   </div>
                 </div>
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
 
             {/* CTA Group */}
             <div className="pww-cta-group">
